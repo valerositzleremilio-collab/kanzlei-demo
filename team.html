@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/nav.css">
   <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/subpages.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -43,11 +44,67 @@
   </header>
 
   <main id="main">
-    <section class="wrap" style="padding-top: clamp(9rem, 20vh, 12rem); padding-bottom: var(--section-pad);">
+
+    <section class="team-hero wrap">
       <span class="kicker">Team</span>
-      <h1 style="margin-top: 1rem; max-width: 18ch;">Drei Köpfe, <span class="em">ein</span> Anspruch.</h1>
-      <p class="wrap" style="padding-inline:0; margin-top: 1.5rem; font-size: var(--fs-lead); color: var(--ink-soft);">Gerüst steht — drei Profile mit CSS-Art-Porträts, Captions und Qualifikationen folgen in Aufgabe 3.</p>
+      <h1>Drei Köpfe, <span class="em">ein</span> Anspruch.</h1>
+      <p class="page-hero__lead">Kurze Wege, feste Ansprechpartner: Jedes Mandat hat bei uns einen Namen, keine Warteschleife.</p>
     </section>
+
+    <section class="team-grid wrap" data-reveal-group>
+
+      <figure class="profile reveal-item">
+        <div class="profile__portrait">
+          <svg viewBox="0 0 300 400" fill="none" aria-hidden="true">
+            <circle cx="150" cy="140" r="52" stroke="currentColor" stroke-width="1"/>
+            <path d="M78 400 L100 246 Q150 214 200 246 L222 400" stroke="currentColor" stroke-width="1"/>
+          </svg>
+          <div class="portrait-grain"></div>
+        </div>
+        <figcaption>Villingen-Schwenningen · seit 2008</figcaption>
+        <h3>Dr. Anne Waldner</h3>
+        <span class="profile__role">Steuerberaterin · Gründungspartnerin</span>
+        <p>Schwerpunkt Unternehmensberatung, Steuerstrategie und Unternehmensnachfolge.</p>
+      </figure>
+
+      <figure class="profile reveal-item">
+        <div class="profile__portrait">
+          <svg viewBox="0 0 300 400" fill="none" aria-hidden="true">
+            <circle cx="150" cy="145" r="50" stroke="currentColor" stroke-width="1"/>
+            <path d="M82 400 L102 250 Q150 220 198 250 L218 400" stroke="currentColor" stroke-width="1"/>
+          </svg>
+          <div class="portrait-grain"></div>
+        </div>
+        <figcaption>Villingen-Schwenningen · seit 2015</figcaption>
+        <h3>Markus Partl</h3>
+        <span class="profile__role">Steuerberater · Partner</span>
+        <p>Schwerpunkt Existenzgründung, GmbH-Beratung und laufende Finanzbuchhaltung.</p>
+      </figure>
+
+      <figure class="profile reveal-item">
+        <div class="profile__portrait">
+          <svg viewBox="0 0 300 400" fill="none" aria-hidden="true">
+            <circle cx="150" cy="138" r="53" stroke="currentColor" stroke-width="1"/>
+            <path d="M76 400 L99 244 Q150 210 201 244 L224 400" stroke="currentColor" stroke-width="1"/>
+          </svg>
+          <div class="portrait-grain"></div>
+        </div>
+        <figcaption>Villingen-Schwenningen · seit 2019</figcaption>
+        <h3>Julia Sailer</h3>
+        <span class="profile__role">Steuerberaterin</span>
+        <p>Schwerpunkt Privatmandanten, Kapitalanlagen und Vermögensnachfolge.</p>
+      </figure>
+
+    </section>
+
+    <section class="cta-band wrap">
+      <div class="cta-band__inner">
+        <h2>Bereit für ein <span class="em">Erstgespräch</span>?</h2>
+        <p>Unverbindlich, persönlich, ohne Umwege. Wir melden uns innerhalb eines Werktags.</p>
+        <a href="kontakt.html" class="btn btn--primary">Termin anfragen</a>
+      </div>
+    </section>
+
   </main>
 
   <footer class="site-footer" id="siteFooter">
@@ -96,5 +153,6 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/subpages.js"></script>
 </body>
 </html>

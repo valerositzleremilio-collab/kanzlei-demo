@@ -14,6 +14,26 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/nav.css">
   <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/subpages.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AccountingService",
+    "name": "WALDNER & PART Steuerberatung",
+    "serviceType": "Steuerberatung für Privatmandanten",
+    "url": "https://valerositzleremilio-collab.github.io/kanzlei-demo/leistungen-privat.html",
+    "telephone": "+49-7721-0000000",
+    "priceRange": "€€",
+    "areaServed": "Villingen-Schwenningen",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rietstraße 12",
+      "addressLocality": "Villingen-Schwenningen",
+      "postalCode": "78048",
+      "addressCountry": "DE"
+    }
+  }
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -43,11 +63,94 @@
   </header>
 
   <main id="main">
-    <section class="wrap" style="padding-top: clamp(9rem, 20vh, 12rem); padding-bottom: var(--section-pad);">
+
+    <!-- Hero-Statement -->
+    <section class="page-hero wrap">
       <span class="kicker">Für Privat</span>
-      <h1 style="margin-top: 1rem; max-width: 18ch;">Ihre Steuern, <span class="em">verständlich</span> erklärt.</h1>
-      <p class="wrap" style="padding-inline:0; margin-top: 1.5rem; font-size: var(--fs-lead); color: var(--ink-soft);">Gerüst steht — Hero-Statement, Problem/Nutzen, Ablauf in 3 Schritten, FAQ und CTA folgen in Aufgabe 3.</p>
+      <h1>Ihre Steuern, <span class="em">verständlich</span> erklärt.</h1>
+      <p class="page-hero__lead">Einkommensteuererklärung, Kapitalanlagen und Vermögensnachfolge: verständlich erklärt, ohne Fachchinesisch, mit einem festen Ansprechpartner.</p>
     </section>
+
+    <!-- Problem / Nutzen -->
+    <section class="problem-nutzen wrap" data-reveal-group>
+      <div class="problem-nutzen__grid">
+        <div class="problem-nutzen__col reveal-item">
+          <span class="kicker">Die Herausforderung</span>
+          <h2>Steuerformulare, die niemand gern ausfüllt.</h2>
+          <ul>
+            <li>Unklarheit, welche Belege überhaupt zählen</li>
+            <li>Kapitalanlagen und Vermietung, die die Erklärung verkomplizieren</li>
+            <li>Vermögensnachfolge, die man gern aufschiebt</li>
+          </ul>
+        </div>
+        <div class="problem-nutzen__col problem-nutzen__col--nutzen reveal-item">
+          <span class="kicker">Der Nutzen</span>
+          <h2>Eine Erklärung, die kein Rätsel mehr ist.</h2>
+          <ul>
+            <li>Wir sagen genau, welche Unterlagen wir brauchen</li>
+            <li>Kapitalerträge und Vermietung sauber und vorteilhaft eingeordnet</li>
+            <li>Vermögensnachfolge frühzeitig und steuerlich durchdacht geregelt</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ablauf in 3 Schritten (echte Sequenz) -->
+    <section class="process wrap">
+      <span class="kicker">Ablauf</span>
+      <h2>In drei Schritten zur Erklärung.</h2>
+      <ol class="process__steps" data-reveal-group>
+        <li class="reveal-item">
+          <span class="process__num">01</span>
+          <h3>Erstgespräch</h3>
+          <p>Wir klären, welche Einkünfte und Besonderheiten in Ihrer Erklärung eine Rolle spielen.</p>
+        </li>
+        <li class="reveal-item">
+          <span class="process__num">02</span>
+          <h3>Unterlagen &amp; Prüfung</h3>
+          <p>Sie reichen die Belege ein, wir prüfen sie auf Vollständigkeit und steuerliche Vorteile.</p>
+        </li>
+        <li class="reveal-item">
+          <span class="process__num">03</span>
+          <h3>Abgabe &amp; Rückmeldung</h3>
+          <p>Wir reichen die Erklärung ein und erläutern Ihnen den Bescheid in klaren Worten.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq wrap">
+      <span class="kicker">Häufige Fragen</span>
+      <h2>Gut zu wissen.</h2>
+      <div class="faq__list">
+        <details class="faq__item">
+          <summary>Lohnt sich eine Steuererklärung auch ohne Verpflichtung?<span class="faq__icon" aria-hidden="true"></span></summary>
+          <p>In vielen Fällen ja: Werbungskosten, Vorsorgeaufwendungen oder Handwerkerleistungen führen häufig zu einer Erstattung.</p>
+        </details>
+        <details class="faq__item">
+          <summary>Wie gehen Sie mit Kapitalanlagen und Vermietung um?<span class="faq__icon" aria-hidden="true"></span></summary>
+          <p>Wir ordnen Kapitalerträge, Verluste und Vermietungseinkünfte so ein, dass alle gesetzlichen Vorteile ausgeschöpft werden.</p>
+        </details>
+        <details class="faq__item">
+          <summary>Beraten Sie auch zur Vermögensnachfolge?</summary>
+          <p>Ja, von der Schenkung zu Lebzeiten bis zur testamentarischen Regelung, in Abstimmung mit Ihrem Notar.</p>
+        </details>
+        <details class="faq__item">
+          <summary>Wie schnell erhalte ich eine Rückmeldung?<span class="faq__icon" aria-hidden="true"></span></summary>
+          <p>Auf Anfragen über unser Kontaktformular melden wir uns in der Regel innerhalb eines Werktags zurück.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- CTA-Band -->
+    <section class="cta-band wrap">
+      <div class="cta-band__inner">
+        <h2>Bereit für ein <span class="em">Erstgespräch</span>?</h2>
+        <p>Unverbindlich, persönlich, ohne Umwege. Wir melden uns innerhalb eines Werktags.</p>
+        <a href="kontakt.html" class="btn btn--primary">Termin anfragen</a>
+      </div>
+    </section>
+
   </main>
 
   <footer class="site-footer" id="siteFooter">
@@ -96,5 +199,6 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/subpages.js"></script>
 </body>
 </html>

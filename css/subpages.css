@@ -1,0 +1,270 @@
+/* WALDNER & PART — Unterseiten (Aufgabe 3)
+   Leistungsseiten (Hero-Statement → Problem/Nutzen → Ablauf → FAQ → CTA),
+   Team-Profile, Kontaktformular + Anfahrt-SVG. */
+
+/* ---------- Page-Hero (Leistungsseiten) ---------- */
+.page-hero {
+  padding-top: clamp(9rem, 20vh, 12rem);
+  padding-bottom: clamp(3rem, 8vh, 5rem);
+}
+.page-hero h1 { margin-top: 1rem; max-width: 18ch; }
+.page-hero__lead {
+  margin-top: 1.5rem;
+  font-size: var(--fs-lead);
+  color: var(--ink-soft);
+  max-width: 48ch;
+}
+
+/* ---------- Problem / Nutzen ---------- */
+.problem-nutzen { padding-block: var(--section-pad); }
+.problem-nutzen__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2rem, 6vw, 4rem);
+}
+.problem-nutzen__col { min-width: 0; }
+.problem-nutzen__col h2 { margin-top: .85rem; font-size: var(--fs-h3); max-width: 20ch; }
+.problem-nutzen__col ul { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+.problem-nutzen__col li {
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: .96rem;
+}
+.problem-nutzen__col li:first-child { border-top: none; padding-top: 0; }
+.problem-nutzen__col--nutzen li { color: var(--ink); }
+
+@media (max-width: 780px) {
+  .problem-nutzen__grid { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+
+/* ---------- Ablauf in 3 Schritten (echte Sequenz — Nummerierung gerechtfertigt) ---------- */
+.process { padding-bottom: var(--section-pad); }
+.process h2 { margin-top: .85rem; max-width: 22ch; }
+.process__steps {
+  margin-top: 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+}
+.process__steps li { min-width: 0; }
+.process__num {
+  display: block;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--accent);
+}
+.process__steps h3 { margin-top: .85rem; font-size: 1.15rem; }
+.process__steps p { margin-top: .6rem; color: var(--ink-soft); font-size: .95rem; }
+
+@media (max-width: 780px) {
+  .process__steps { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+/* ---------- FAQ (native <details>, keine Box, nur Hairline-Divider) ---------- */
+.faq { padding-bottom: var(--section-pad); max-width: 76ch; }
+.faq h2 { margin-top: .85rem; }
+.faq__list { margin-top: 2rem; }
+
+.faq__item {
+  border-bottom: 1px solid var(--line);
+}
+.faq__item summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 44px;
+  padding-block: 1.25rem;
+  font-weight: 600;
+  font-size: 1.02rem;
+}
+.faq__item summary::-webkit-details-marker { display: none; }
+.faq__item summary::marker { content: ""; }
+
+.faq__icon {
+  position: relative;
+  flex-shrink: 0;
+  width: 18px; height: 18px;
+}
+.faq__icon::before,
+.faq__icon::after {
+  content: "";
+  position: absolute;
+  background: var(--ink);
+  transition: transform var(--dur) var(--ease-out), opacity var(--dur) var(--ease-out);
+}
+.faq__icon::before { left: 0; top: 50%; width: 100%; height: 1.5px; transform: translateY(-50%); }
+.faq__icon::after { top: 0; left: 50%; width: 1.5px; height: 100%; transform: translateX(-50%); }
+.faq__item[open] .faq__icon::after { opacity: 0; transform: translateX(-50%) rotate(90deg); }
+
+.faq__item p {
+  padding-bottom: 1.5rem;
+  color: var(--ink-soft);
+  max-width: 65ch;
+}
+
+/* ---------- Team ---------- */
+.team-hero { padding-top: clamp(9rem, 20vh, 12rem); padding-bottom: clamp(2rem, 6vh, 3.5rem); }
+.team-hero h1 { margin-top: 1rem; max-width: 18ch; }
+
+.team-grid {
+  padding-bottom: var(--section-pad);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2.5rem;
+}
+
+.profile { min-width: 0; }
+.profile__portrait {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: var(--bg-deep);
+}
+.profile__portrait svg { position: absolute; inset: 0; width: 100%; height: 100%; color: var(--accent-dark); opacity: .6; }
+.profile__portrait .portrait-grain {
+  position: absolute; inset: 0; opacity: .07; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.profile figcaption {
+  margin-top: .85rem;
+  font-size: var(--fs-kicker);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.profile h3 { margin-top: .9rem; font-size: 1.2rem; }
+.profile__role { display: block; margin-top: .25rem; color: var(--accent); font-size: .88rem; font-weight: 600; }
+.profile p { margin-top: .85rem; color: var(--ink-soft); font-size: .92rem; }
+
+@media (max-width: 860px) {
+  .team-grid { grid-template-columns: 1fr; gap: 3rem; }
+}
+
+/* ---------- Kontakt: Formular + Anfahrt ---------- */
+.contact-hero { padding-top: clamp(9rem, 20vh, 12rem); padding-bottom: clamp(2rem, 6vh, 3.5rem); }
+.contact-hero h1 { margin-top: 1rem; max-width: 18ch; }
+
+.contact-grid {
+  padding-bottom: var(--section-pad);
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: clamp(2rem, 6vw, 4rem);
+  align-items: start;
+}
+
+.contact-form { min-width: 0; }
+.field { margin-bottom: 1.5rem; }
+.field label {
+  display: block;
+  font-size: .88rem;
+  font-weight: 600;
+  margin-bottom: .5rem;
+}
+.field .required { color: var(--accent); }
+.field input,
+.field textarea {
+  width: 100%;
+  min-height: 44px;
+  padding: .75rem 0;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  font: inherit;
+  color: var(--ink);
+  transition: border-color var(--dur) var(--ease);
+}
+.field textarea { min-height: 100px; resize: vertical; }
+.field input:focus,
+.field textarea:focus { outline: none; border-color: var(--accent); }
+
+/* Underline-Draw bei Fokus (FRM-002) */
+.field { position: relative; }
+.field::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 100%; height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .3s var(--ease-out);
+  pointer-events: none;
+}
+.field:focus-within::after { transform: scaleX(1); }
+
+.field__hint { margin-top: .4rem; font-size: .8rem; color: var(--ink-soft); }
+.field__error {
+  margin-top: .4rem;
+  font-size: .8rem;
+  color: #9F2F2D;
+  display: none;
+}
+.field.has-error input,
+.field.has-error textarea { border-color: #9F2F2D; }
+.field.has-error .field__error { display: block; }
+
+.privacy-note { font-size: .82rem; color: var(--ink-soft); margin-bottom: 1.5rem; }
+.privacy-note a { text-decoration: underline; text-underline-offset: 2px; }
+
+/* Submit-Zyklus (BTN-123-Muster): idle → loading → success, Demo-Simulation */
+.submit-btn { position: relative; min-width: 220px; }
+.submit-btn__label,
+.submit-btn__spinner,
+.submit-btn__success {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+}
+.submit-btn__spinner,
+.submit-btn__success { display: none; }
+.submit-btn__spinner svg { animation: spin .7s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.submit-btn[data-state="loading"] .submit-btn__label { display: none; }
+.submit-btn[data-state="loading"] .submit-btn__spinner { display: inline-flex; }
+.submit-btn[data-state="success"] .submit-btn__label { display: none; }
+.submit-btn[data-state="success"] .submit-btn__success { display: inline-flex; }
+.submit-btn[data-state="loading"],
+.submit-btn[data-state="success"] { pointer-events: none; }
+
+.submit-btn__success svg { stroke-dasharray: 20; stroke-dashoffset: 20; }
+.submit-btn[data-state="success"] .submit-btn__success svg { animation: check-draw .3s var(--ease-out) forwards; }
+@keyframes check-draw { to { stroke-dashoffset: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .submit-btn__spinner svg { animation: none; }
+  .submit-btn__success svg { animation: none; stroke-dashoffset: 0; }
+}
+
+.contact-info { min-width: 0; }
+.contact-info h2 { font-size: var(--fs-h3); }
+.contact-info address { margin-top: 1rem; font-style: normal; color: var(--ink-soft); line-height: 1.9; }
+.contact-info address a { color: var(--ink); font-weight: 600; }
+
+.anfahrt { margin-top: 2rem; }
+.anfahrt svg { width: 100%; height: auto; border: 1px solid var(--line); border-radius: var(--radius-md); }
+.anfahrt figcaption { margin-top: .65rem; font-size: var(--fs-kicker); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
+
+.anfahrt-bg { fill: var(--bg-alt); }
+.anfahrt-road { stroke: var(--line); fill: none; }
+.anfahrt-label { fill: var(--ink-soft); font-family: var(--font-grotesk); letter-spacing: .06em; }
+.anfahrt-pin { fill: var(--accent); }
+.anfahrt-pin-hole { fill: var(--bg-alt); }
+.anfahrt-pin-label { fill: var(--ink); font-family: var(--font-grotesk); font-weight: 700; }
+
+@media (max-width: 860px) {
+  .contact-grid { grid-template-columns: 1fr; }
+}
+
+/* ---------- Reveal-Utility (wie Footer-Spalten, No-JS-sicher) ---------- */
+html.js .reveal-item { opacity: 0; transform: translateY(14px); }
+html.js .reveal-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity .6s var(--ease-out), transform .6s var(--ease-out);
+}

@@ -168,6 +168,18 @@ main { display: block; }
 .link-draw:hover::after,
 .link-draw:focus-visible::after { transform: scaleX(1); }
 
+/* CTA-Band — sitewide (Home + Unterseiten) */
+.cta-band { padding-bottom: var(--section-pad); }
+.cta-band__inner {
+  text-align: center;
+  background: var(--bg-alt);
+  border-radius: var(--radius-md);
+  padding: clamp(3rem, 8vw, 5rem) var(--pad-x);
+}
+.cta-band__inner h2 { max-width: 16ch; margin-inline: auto; }
+.cta-band__inner p { margin: 1.25rem auto 0; color: var(--ink-soft); max-width: 40ch; }
+.cta-band__inner .btn { margin-top: 2rem; }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/nav.css">
   <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/subpages.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -43,11 +44,77 @@
   </header>
 
   <main id="main">
-    <section class="wrap" style="padding-top: clamp(9rem, 20vh, 12rem); padding-bottom: var(--section-pad);">
+
+    <section class="contact-hero wrap">
       <span class="kicker">Kontakt</span>
-      <h1 style="margin-top: 1rem; max-width: 18ch;">Lassen Sie uns <span class="em">sprechen</span>.</h1>
-      <p class="wrap" style="padding-inline:0; margin-top: 1.5rem; font-size: var(--fs-lead); color: var(--ink-soft);">Gerüst steht — minimales Formular (Datenminimierung), Anfahrt als eigenes SVG folgen in Aufgabe 3.</p>
+      <h1>Lassen Sie uns <span class="em">sprechen</span>.</h1>
+      <p class="page-hero__lead">Kurz schildern, was Sie beschäftigt: Wir melden uns in der Regel innerhalb eines Werktags zurück.</p>
     </section>
+
+    <section class="contact-grid wrap">
+
+      <form id="contactForm" class="contact-form" novalidate>
+        <div class="field">
+          <label for="cf-name">Name <span class="required" aria-hidden="true">*</span></label>
+          <input type="text" id="cf-name" name="name" required autocomplete="name">
+          <p class="field__error" role="alert"></p>
+        </div>
+        <div class="field">
+          <label for="cf-email">E-Mail <span class="required" aria-hidden="true">*</span></label>
+          <input type="email" id="cf-email" name="email" required autocomplete="email">
+          <p class="field__error" role="alert"></p>
+        </div>
+        <div class="field">
+          <label for="cf-message">Ihr Anliegen <span class="required" aria-hidden="true">*</span></label>
+          <textarea id="cf-message" name="message" required></textarea>
+          <p class="field__error" role="alert"></p>
+        </div>
+        <p class="privacy-note">Mit dem Absenden stimmen Sie der Verarbeitung Ihrer Angaben gemäß unserer <a href="datenschutz.html" class="link-draw">Datenschutzerklärung</a> zu. Diese Demo überträgt keine echten Daten, das Formular ist eine reine Funktions-Simulation.</p>
+        <button type="submit" class="btn btn--primary submit-btn" data-state="idle" aria-live="polite">
+          <span class="submit-btn__label">Nachricht senden</span>
+          <span class="submit-btn__spinner" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="2" stroke-dasharray="28" stroke-dashoffset="10"/></svg>
+            Wird gesendet …
+          </span>
+          <span class="submit-btn__success">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Gesendet
+          </span>
+        </button>
+      </form>
+
+      <div class="contact-info">
+        <h2>Direkt erreichbar</h2>
+        <address>
+          WALDNER &amp; PART Steuerberatung PartG mbB<br>
+          Rietstraße 12<br>
+          78048 Villingen-Schwenningen<br><br>
+          Telefon: <a href="tel:+4977210000000">07721 00 00 00</a><br>
+          E-Mail: <a href="mailto:kanzlei@waldner-part-demo.de">kanzlei@waldner-part-demo.de</a><br><br>
+          Mo–Do 8:00–17:00 Uhr<br>
+          Fr 8:00–13:00 Uhr
+        </address>
+
+        <figure class="anfahrt">
+          <svg viewBox="0 0 400 240" role="img" aria-label="Schematische Lageskizze: Kanzleisitz an der Rietstraße, Villingen-Schwenningen">
+            <rect class="anfahrt-bg" width="400" height="240"/>
+            <path class="anfahrt-road" d="M0 150 H400" stroke-width="10"/>
+            <path class="anfahrt-road" d="M120 0 V240" stroke-width="8"/>
+            <path class="anfahrt-road" d="M300 0 V240" stroke-width="6"/>
+            <text class="anfahrt-label" x="16" y="140" font-size="11">RIETSTRASSE</text>
+            <text class="anfahrt-label" x="130" y="26" font-size="10">BAHNHOFSTR.</text>
+            <g transform="translate(120,150)">
+              <path class="anfahrt-pin" d="M0 -34 C 9 -34 16 -27 16 -18 C 16 -8 0 8 0 8 C 0 8 -16 -8 -16 -18 C -16 -27 -9 -34 0 -34 Z"/>
+              <circle class="anfahrt-pin-hole" cx="0" cy="-18" r="5"/>
+            </g>
+            <text class="anfahrt-pin-label" x="132" y="115" font-size="12">Kanzleisitz</text>
+          </svg>
+          <figcaption>Anfahrt · Rietstraße 12 · Villingen-Schwenningen</figcaption>
+        </figure>
+      </div>
+
+    </section>
+
   </main>
 
   <footer class="site-footer" id="siteFooter">
@@ -96,5 +163,6 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/subpages.js"></script>
 </body>
 </html>

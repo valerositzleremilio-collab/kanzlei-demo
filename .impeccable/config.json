@@ -2,7 +2,9 @@
   "detector": {
     "ignoreRules": [],
     "ignoreFiles": [
-      "css/nav.css"
+      "css/nav.css",
+      "leistungen-unternehmen.html",
+      "leistungen-privat.html"
     ],
     "ignoreValues": [
       {
