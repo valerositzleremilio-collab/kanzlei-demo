@@ -81,6 +81,12 @@ html.js .mask-word > span { transform: translateY(105%); }
   padding-bottom: var(--section-pad);
 }
 
+.services__heading {
+  margin-top: .85rem;
+  margin-bottom: 2.5rem;
+  max-width: 16ch;
+}
+
 .services__grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -108,7 +114,6 @@ html.js .mask-word > span { transform: translateY(105%); }
   font-size: .95rem;
   max-width: 34ch;
 }
-.service-card__base .link-draw { margin-top: 1.25rem; font-size: .88rem; font-weight: 600; }
 
 .service-card__reveal {
   position: absolute;
@@ -265,35 +270,42 @@ html.js .mask-word > span { transform: translateY(105%); }
   .about-teaser__text { padding-right: var(--pad-x); padding-left: var(--pad-x); }
 }
 
-/* ---------- Social Proof (rotierendes Zitat) ---------- */
+/* ---------- Social Proof (3 Zitate, statisch, No-JS-sicher) ---------- */
 .proof { padding-bottom: var(--section-pad); }
 
-.proof__inner {
-  max-width: 62ch;
-  margin-inline: auto;
-  padding-inline: var(--pad-x);
-  text-align: center;
+.proof__grid {
+  margin-top: 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2.5rem;
 }
 
-.proof__quote blockquote { margin: 0; }
+.proof__item {
+  margin: 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  min-width: 0;
+}
+
 .proof__text {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(1.3rem, 2.6vw, 1.9rem);
-  line-height: 1.5;
+  font-size: 1.15rem;
+  line-height: 1.55;
   color: var(--ink);
 }
-html.js .proof__text,
-html.js .proof__who { transition: opacity .4s ease, transform .4s var(--ease-out); }
 
 .proof__who {
   display: block;
-  margin-top: 1.25rem;
-  font-size: var(--fs-kicker);
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--accent);
+  margin-top: 1.1rem;
+  font-size: .82rem;
+  letter-spacing: .04em;
+  color: var(--ink-soft);
   font-style: normal;
+}
+
+@media (max-width: 860px) {
+  .proof__grid { grid-template-columns: 1fr; gap: 2rem; }
 }
 
 /* ---------- Trust-Band (Zertifikat-Chips) ---------- */

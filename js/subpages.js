@@ -1,38 +1,8 @@
 /* WALDNER & PART — Unterseiten-Interaktionen (Aufgabe 3)
-   Reveal-Stagger (Problem/Nutzen, Ablauf, Team) + Kontaktformular-Submit-Zyklus. */
+   Kontaktformular-Submit-Zyklus. Reveal-Stagger für [data-reveal-group] ist
+   sitewide in js/main.js (auch Home braucht das jetzt für die Zitate). */
 
 (function () {
-  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var hasGSAP = typeof window.gsap !== 'undefined';
-  var hasScrollTrigger = typeof window.ScrollTrigger !== 'undefined';
-
-  /* ---------- Reveal-Stagger für Listen/Grids ---------- */
-  document.querySelectorAll('[data-reveal-group]').forEach(function (group) {
-    var items = group.querySelectorAll('.reveal-item');
-    if (!items.length) return;
-
-    function reveal() {
-      items.forEach(function (item, idx) {
-        setTimeout(function () { item.classList.add('is-visible'); }, idx * 80);
-      });
-    }
-
-    if (prefersReduced) {
-      items.forEach(function (item) { item.classList.add('is-visible'); });
-    } else if (hasGSAP && hasScrollTrigger) {
-      ScrollTrigger.create({ trigger: group, start: 'top 85%', once: true, onEnter: reveal });
-    } else if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) { reveal(); io.unobserve(entry.target); }
-        });
-      }, { threshold: .2 });
-      io.observe(group);
-    } else {
-      reveal();
-    }
-  });
-
   /* ---------- Kontaktformular: Submit-Zyklus (BTN-123-Muster, reine Demo-Simulation) ---------- */
   var form = document.getElementById('contactForm');
   if (form) {

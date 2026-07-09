@@ -125,4 +125,31 @@
       footerCols.forEach(function (col) { col.classList.add('is-visible'); });
     }
   }
+
+  /* ---------- Reveal-Stagger für Listen/Grids (sitewide: Home-Zitate, Unterseiten-Listen) ---------- */
+  document.querySelectorAll('[data-reveal-group]').forEach(function (group) {
+    var items = group.querySelectorAll('.reveal-item');
+    if (!items.length) return;
+
+    function reveal() {
+      items.forEach(function (item, idx) {
+        setTimeout(function () { item.classList.add('is-visible'); }, idx * 80);
+      });
+    }
+
+    if (prefersReduced) {
+      items.forEach(function (item) { item.classList.add('is-visible'); });
+    } else if (hasGSAP && hasScrollTrigger) {
+      ScrollTrigger.create({ trigger: group, start: 'top 85%', once: true, onEnter: reveal });
+    } else if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) { reveal(); io.unobserve(entry.target); }
+        });
+      }, { threshold: .2 });
+      io.observe(group);
+    } else {
+      reveal();
+    }
+  });
 })();

@@ -97,12 +97,13 @@
 
     <!-- Leistungs-Überblick — CRD-008 Mask-Wipe-Reveal, dezent -->
     <section class="services wrap" aria-label="Unsere Leistungen">
+      <span class="kicker">Leistungen</span>
+      <h2 class="services__heading">Wofür wir da sind.</h2>
       <div class="services__grid">
         <a href="leistungen-unternehmen.html" class="service-card">
           <div class="service-card__base">
             <h3>Für Unternehmen</h3>
             <p>Jahresabschluss, Lohnbuchhaltung und Steuerstrategie, damit Sie sich aufs Kerngeschäft konzentrieren können.</p>
-            <span class="link-draw">Leistungen ansehen</span>
           </div>
           <div class="service-card__reveal" aria-hidden="true">Für Unternehmen →</div>
         </a>
@@ -110,7 +111,6 @@
           <div class="service-card__base">
             <h3>Für Privat</h3>
             <p>Einkommensteuer, Kapitalanlagen und Vorsorge: verständlich erklärt, zuverlässig umgesetzt.</p>
-            <span class="link-draw">Leistungen ansehen</span>
           </div>
           <div class="service-card__reveal" aria-hidden="true">Für Privat →</div>
         </a>
@@ -118,7 +118,6 @@
           <div class="service-card__base">
             <h3>Team</h3>
             <p>Drei Steuerberater, ein Anspruch: persönliche Betreuung auf Augenhöhe.</p>
-            <span class="link-draw">Team kennenlernen</span>
           </div>
           <div class="service-card__reveal" aria-hidden="true">Team →</div>
         </a>
@@ -169,15 +168,22 @@
       </div>
     </section>
 
-    <!-- Social Proof — SOC-009 rotierendes Zitat -->
-    <section class="proof">
-      <div class="proof__inner">
-        <div class="proof__quote" role="status" aria-live="polite">
-          <blockquote>
-            <p class="proof__text" id="proofText">„Endlich eine Kanzlei, die uns erklärt, warum eine Zahl so ist, wie sie ist.“</p>
-            <cite class="proof__who" id="proofWho">M. Herrmann · Geschäftsführerin</cite>
-          </blockquote>
-        </div>
+    <!-- Social Proof — SOC-009-Muster, statisch statt rotierend (3 Zitate immer sichtbar, No-JS-sicher) -->
+    <section class="proof wrap">
+      <span class="kicker">Stimmen unserer Mandanten</span>
+      <div class="proof__grid" data-reveal-group>
+        <blockquote class="proof__item reveal-item">
+          <p class="proof__text">„Endlich eine Kanzlei, die uns erklärt, warum eine Zahl so ist, wie sie ist.“</p>
+          <cite class="proof__who">M. Herrmann · Geschäftsführerin, Herrmann Feinwerktechnik GmbH</cite>
+        </blockquote>
+        <blockquote class="proof__item reveal-item">
+          <p class="proof__text">„Ruhig, verbindlich, termintreu. Genau das, was man sich von seiner Steuerberatung wünscht.“</p>
+          <cite class="proof__who">T. Berger · Inhaber, Berger Dach &amp; Fassade</cite>
+        </blockquote>
+        <blockquote class="proof__item reveal-item">
+          <p class="proof__text">„Die Steuererklärung war zum ersten Mal kein Rätsel mehr.“</p>
+          <cite class="proof__who">S. Kienzle · Privatmandantin</cite>
+        </blockquote>
       </div>
     </section>
 
@@ -188,17 +194,17 @@
         <li class="chip">
           <svg class="chip__border" preserveAspectRatio="none" aria-hidden="true"><rect x="1" y="1" width="98%" height="88%" rx="10"/></svg>
           <svg class="chip__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5L6.2 11.5L13 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Mitglied Steuerberaterkammer
+          Mitglied Steuerberaterkammer Südbaden
         </li>
         <li class="chip">
           <svg class="chip__border" preserveAspectRatio="none" aria-hidden="true"><rect x="1" y="1" width="98%" height="88%" rx="10"/></svg>
           <svg class="chip__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5L6.2 11.5L13 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          DSGVO-konform
+          Fachberaterin für Unternehmensnachfolge
         </li>
         <li class="chip">
           <svg class="chip__border" preserveAspectRatio="none" aria-hidden="true"><rect x="1" y="1" width="98%" height="88%" rx="10"/></svg>
           <svg class="chip__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5L6.2 11.5L13 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          GoBD-konform
+          Digitale Kanzlei
         </li>
       </ul>
     </section>
@@ -221,7 +227,7 @@
           <path d="M20 3 A17 17 0 1 1 19.99 3 M12 27 L20 13 L28 27 M16 27 L20 18 L24 27" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         <span class="site-footer__wordmark">WALDNER <span class="brand__amp">&amp;</span> PART</span>
-        <p class="site-footer__claim">Steuerberatung für Unternehmen und Privatmandanten in Villingen-Schwenningen: ruhig, verbindlich, auf den Punkt.</p>
+        <p class="site-footer__claim">Steuerberatung für Unternehmen und Privatmandanten in Villingen-Schwenningen.</p>
       </div>
       <div class="site-footer__col">
         <h3>Leistungen</h3>
@@ -251,6 +257,7 @@
     <div class="wrap site-footer__bottom">
       <div class="site-footer__legal">
         <span>© 2026 WALDNER &amp; PART Steuerberatung PartG mbB (fiktiv)</span>
+        <span class="site-footer__compliance">DSGVO-konform · GoBD-konform</span>
       </div>
       <p class="site-footer__demo-note">Fiktive Demo — Design: <a href="https://oddomode.de" target="_blank" rel="noopener">Oddomode</a></p>
     </div>

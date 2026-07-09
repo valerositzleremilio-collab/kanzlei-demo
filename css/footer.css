@@ -85,6 +85,12 @@ html.js .site-footer__col.is-visible {
 
 .site-footer__legal { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
 
+.site-footer__compliance {
+  color: rgba(244, 241, 234, .55); /* AA-geprüft: 5.32:1 auf --bg-deep */
+  padding-left: .6rem;
+  border-left: 1px solid var(--line-deep);
+}
+
 .site-footer__demo-note {
   font-style: italic;
   font-family: var(--font-serif);

@@ -180,6 +180,14 @@ main { display: block; }
 .cta-band__inner p { margin: 1.25rem auto 0; color: var(--ink-soft); max-width: 40ch; }
 .cta-band__inner .btn { margin-top: 2rem; }
 
+/* Reveal-Utility — sitewide (Home-Zitate + Unterseiten-Listen), No-JS-sicher */
+html.js .reveal-item { opacity: 0; transform: translateY(14px); }
+html.js .reveal-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity .6s var(--ease-out), transform .6s var(--ease-out);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
