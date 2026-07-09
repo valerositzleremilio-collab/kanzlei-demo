@@ -1,0 +1,101 @@
+/* WALDNER & PART — Footer
+   Quelle: FTR-006 (Dark-Flip, hier permanent statt Toggle — kein Dark-Mode-Wechsel für die Seite,
+   nur der Footer selbst ist die dunkle Editorial-Fläche) + F3 Spalten-Stagger-Reveal. */
+
+.site-footer {
+  background: var(--bg-deep);
+  color: var(--bg);
+  padding-block: clamp(4rem, 9vh, 6rem) 2rem;
+}
+
+.site-footer__grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  padding-bottom: clamp(3rem, 7vh, 5rem);
+  border-bottom: 1px solid var(--line-deep);
+}
+
+/* No-JS/Progressive-Enhancement (KAIVOSS-Konvention): sichtbar per Default,
+   nur mit bestätigtem JS (html.js) wird versteckt+animiert reveal't. */
+html.js .site-footer__col {
+  opacity: 0;
+  transform: translateY(16px);
+}
+html.js .site-footer__col.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity .6s var(--ease-out), transform .6s var(--ease-out);
+}
+
+.site-footer__brand { display: flex; flex-direction: column; gap: 1.1rem; }
+.site-footer__brand .brand__mark { width: 30px; height: 30px; color: var(--accent-dark); }
+.site-footer__brand .brand__mark path { animation: none; stroke-dashoffset: 0; }
+.site-footer__wordmark {
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.site-footer__wordmark .brand__amp { color: var(--accent-dark); font-family: var(--font-serif); font-style: italic; }
+.site-footer__claim { color: rgba(244, 241, 234, .65); font-size: .92rem; max-width: 32ch; }
+
+.site-footer__col h3 {
+  font-size: var(--fs-kicker);
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--accent-dark);
+  margin-bottom: 1.1rem;
+}
+
+.site-footer__col ul { display: flex; flex-direction: column; gap: .65rem; }
+.site-footer__col a {
+  font-size: .92rem;
+  color: rgba(244, 241, 234, .8);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  transition: color var(--dur) var(--ease-out);
+}
+.site-footer__col a:hover,
+.site-footer__col a:focus-visible { color: var(--bg); }
+
+.site-footer__col address { font-style: normal; font-size: .92rem; color: rgba(244, 241, 234, .8); line-height: 1.8; }
+
+.site-footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1.75rem;
+  font-size: .8rem;
+  color: rgba(244, 241, 234, .55);
+}
+
+.site-footer__bottom a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  color: rgba(244, 241, 234, .7);
+}
+.site-footer__bottom a:hover,
+.site-footer__bottom a:focus-visible { color: var(--bg); }
+
+.site-footer__legal { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
+
+.site-footer__demo-note {
+  font-style: italic;
+  font-family: var(--font-serif);
+  color: var(--accent-dark);
+}
+.site-footer__demo-note a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+
+@media (max-width: 860px) {
+  .site-footer__grid { grid-template-columns: 1fr 1fr; }
+  .site-footer__brand { grid-column: 1 / -1; }
+}
+@media (max-width: 520px) {
+  .site-footer__grid { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,58 @@
+/* WALDNER & PART — Design Tokens · gesperrt in BUILD-PLAN.md §3 */
+
+@font-face {
+  font-family: 'Archivo';
+  src: url('../fonts/Archivo-Variable.woff2') format('woff2');
+  font-weight: 400 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Fraunces';
+  src: url('../fonts/Fraunces-Italic-Variable.woff2') format('woff2');
+  font-weight: 300 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  /* Basis — warmes Ivory-Mono */
+  --bg:          #F4F1EA;
+  --bg-alt:      #ECE7DB;
+  --bg-deep:     #17211C;
+  --ink:         #1A2420;
+  --ink-soft:    #55605A;
+  --line:        #D8D2C4;
+  --line-deep:   rgba(244, 241, 234, .16);
+
+  /* EIN Akzent — tiefes Tannengrün */
+  --accent:      #1F4A38;
+  --accent-hov:  #163627;
+  --accent-ink:  #F4F1EA;
+  --accent-dark: #9DBBA9;
+
+  /* Typografie */
+  --font-grotesk: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-serif:   'Fraunces', Georgia, serif;
+
+  --fs-h1:     clamp(2.8rem, 8vw, 7rem);
+  --fs-h2:     clamp(2rem, 5vw, 4rem);
+  --fs-h3:     clamp(1.3rem, 2.5vw, 2rem);
+  --fs-lead:   clamp(1.1rem, 1.6vw, 1.4rem);
+  --fs-body:   clamp(1rem, 1.1vw, 1.15rem);
+  --fs-small:  0.9rem;
+  --fs-kicker: 0.75rem;
+
+  /* System */
+  --max-w:  1200px;
+  --pad-x:  clamp(1rem, 4vw, 3rem);
+  --section-pad: clamp(5rem, 12vh, 10rem);
+
+  --ease:      cubic-bezier(0.65, 0.05, 0.36, 1);
+  --ease-out:  cubic-bezier(0.23, 1, 0.32, 1);
+  --dur:       .6s;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+}

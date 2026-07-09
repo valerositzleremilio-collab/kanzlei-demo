@@ -1,0 +1,16 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [
+      "css/nav.css"
+    ],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "fraunces",
+        "reason": "Locked in BUILD-PLAN.md Aufgabe 0: used only as the ONE serif-italic emphasis word per headline (07-Design Regel 2), never as body/UI font - Old-Money-Editorial accent, not a generic default",
+        "createdAt": "2026-07-09T09:53:24.323Z"
+      }
+    ]
+  }
+}
