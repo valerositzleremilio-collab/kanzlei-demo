@@ -37,7 +37,10 @@
     function runCountUps() {
       statEls.forEach(function (el) {
         var target = parseFloat(el.dataset.count || '0');
+        // Markup zeigt den Endwert per Default (No-JS/Crawler/Reader-Mode-sicher).
+        // Erst hier, unmittelbar bevor die Animation wirklich läuft, kurz auf 0 setzen.
         if (prefersReduced || !hasGSAP) { formatStat(el, target); return; }
+        formatStat(el, 0);
         var proxy = { v: 0 };
         gsap.to(proxy, {
           v: target,
