@@ -1,0 +1,167 @@
+# BUILD-PLAN — WALDNER & PART · Steuerberatung (Fiktive Demo)
+
+> **Portfolio-Build #1** · Oddomode-Standard · Stack: pure HTML/CSS/JS, CDN nur GSAP 3.12.5 + Lenis 1.0.42, Fonts self-hosted in `/fonts`, kein Build-Tool.
+> **Repo:** `valerositzleremilio-collab/kanzlei-demo` (public) → GitHub Pages am Ende.
+> **Erstellt:** Aufgabe 0 (Opus 4.8 High) · 2026-07-09
+
+---
+
+## 1 · Kundenprofil (Blueprint-Pflichtschritt 1)
+
+| Feld | Festlegung |
+|---|---|
+| **Marke** | WALDNER & PART — Steuerberatung (frei erfunden) |
+| **Ort** | Villingen-Schwenningen (Schwarzwald-Baar) |
+| **Nische** | Steuerberater / Kanzlei (03-Struktur-Zeile) |
+| **Ziel-Gefühl** | „ruhige Souveränität" — Old-Money-Editorial trifft moderne Kanzlei. Vertrauen vor Show. |
+| **Effekt-Level** | **DEZENT** — Craft aus Typo, Weißraum, EINEM ruhigen Signature-Moment. Kein Dark-Mode-Theme, keine verspielten Effekte. |
+| **3D** | Nein |
+| **Seitentyp** | Mehrseiter (7 Seiten) |
+| **Motion-Budget Home** | 4–5 gezielte Interaktionen gesamt, alle TASTE-v3-konform, kein Overshoot auf Primär-Interaktionen |
+| **Demo-Kennzeichnung** | Footer-Zeile „Fiktive Demo — Design: Oddomode"; Rechtsseiten strukturell vollständig, klar als Muster gekennzeichnet |
+
+**Niche-Regel (fix):** Seriosität = gedeckte Farben, klare Leistungsübersicht, Team + Qualifikationen sichtbar, KEINE verspielten Effekte (03-Struktur Steuerberater-Zeile). Deshalb: Look-⭐-lastige, ruhige Keeper bevorzugt; Motion nur wo sie *Funktion* trägt (TASTE DA1/AA1).
+
+---
+
+## 2 · Referenzen (Mess-Basis)
+
+**Methoden-Ehrlichkeit:** Guardrail „read ONLY these files" gilt — deshalb keine Live-Scrapes fremder Kanzlei-Seiten (Foreign-Asset-Risiko + Guardrail). Mess-Basis = die **live-vermessenen Anker** (`KAIVOSS-BAR.md`) + die **offen-vermessenen / award-typischen Zielwerte** aus `REFERENZEN.md`. Die „Professional-Services"-Klasse ist dort bereits als **Stripe / Linear / Vercel-Klasse** vermessen — genau die richtige Referenzwelt für eine seriöse Kanzlei (ruhige Reveals, Zahlen-Count-ups, Theme-Naht, minimalistische Footer). Editorial-Award-Seite = godly.website/awwwards-Klasse (Big-Type, Caption-Kultur, Weißraum).
+
+### Gemessene Werte, die ich sperre (aus REFERENZEN.md + KAIVOSS-BAR.md)
+
+| Baustein | Referenz | Zielwert (gesperrt) |
+|---|---|---|
+| **Hero-Entry** | H1/K1/3·TY1 Word-Mask | Wörter `translateY 100%→0` in `overflow:hidden`, stagger **0.05 s**, **0.8 s** `power3.out`, once, Load |
+| **Nav shrink** | N2 (Stripe/Linear-Klasse) | Höhe 80→60 px, `backdrop-blur 0→10px` über 0–120 px Scroll, scrub-artig |
+| **Nav hide/reveal** | N3/NV2 (Linear) | `translateY(-100%)` bei down / `0` bei up, **0.35 s** `power2.out`, Schwelle Δy > 6 px, oben immer sichtbar |
+| **Sektions-Naht (ruhig)** | S4/SC2 (Locomotive-Parallax) | BG `y` scrub-Faktor **0.3–0.5** vs Content 1.0, nur `transform` |
+| **Signature Theme-Flip** | S1/C9/3·SC3 (Linear/landonorris, live-Anker) | BG + Text interpolieren an der Naht, Start `top 70%`, scrub |
+| **Zahlen-Count-up** | T5/P4/C6/3·TB2 (Stripe Stats) | Proxy + `power3.out` **~1.2 s**, `once:true`, `parseFloat`, `tabular-nums` |
+| **Karten-Reveal** | 3·HC3/CRD-008 (Godly-Editorial) | `clip-path inset(100%→0)` **0.5 s** `power3.out`, Bild `scale 1.03` |
+| **Testimonial** | SP1/3·SP1 (Linear reveal) | `y16→0 + opacity`, Start `top 85%`, once |
+| **Footer-Spalten** | F3/FT3 (Stripe Rich-Footer) | Spalten `y16→0 + opacity` stagger **0.08 s**, Start `top 90%`, once |
+| **Form-Input** | M2/FRM-002 Underline-Draw | `border-bottom scaleX 0→1` origin left **0.3 s**, Farbe → Akzent |
+| **Form-Submit** | M9/BTN-123 (Linear Create) | Content-Swap, Spinner `.7 s` linear, Häkchen `stroke-dashoffset .3 s`, Reset 1.6 s, Doppel-Submit-Guard (nur Demo, kein echter Versand) |
+| **Monogramm-Loader** | LDR-003 / H6 Draw-on-Load | `stroke-dashoffset` **~1.8–2.4 s** `power2.inOut`, once, reduced-motion: offset 0 sofort |
+
+### Typo-Skala (Editorial-Award-Regel + 07-Design Regel 1)
+- Display H1: `clamp(2.8rem, 8vw, 7rem)` · H2: `clamp(2rem, 5vw, 4rem)` · H3: `clamp(1.3rem, 2.5vw, 2rem)`
+- Body: `clamp(1rem, 1.1vw, 1.15rem)`, `line-height: 1.7`
+- Kicker/Label: `0.75rem`, `letter-spacing: 0.15em`, uppercase
+- Font-Mix (07-Design Regel 2 / K6): Grotesk-Satz + **EIN** Serif-italic-Emphasis-Wort im Akzent pro Headline. Kein dritter Font.
+
+### Spacing / Rhythmus
+- `--max-w: 1200px` · `--pad-x: clamp(1rem, 4vw, 3rem)`
+- Sektions-Padding vertikal: `clamp(5rem, 12vh, 10rem)` — großzügiger Weißraum = „teuer"
+- Grid mind. **1× brechen** (Full-Bleed Signature-Sektion + asymmetrischer Über-uns-Teaser)
+
+---
+
+## 3 · Tokens (GESPERRT — vor dem Bauen)
+
+**Akzent-Entscheidung:** Cream/Ivory-Basis + tiefe Ink-Töne + **EIN Akzent = tiefes Tannengrün**.
+Begründung aus Teardown: Warm-Gold liest als Luxus-*Brand* (KOENIGSEGG-Welt); **Tannengrün** liest als Vertrauen/Wohlstand/Beständigkeit — old-money, seriös, distinktiver für eine Kanzlei als der Gold-Default. 90 % Mono + dieser eine Akzent (Farbschema-Regel 1).
+
+```css
+:root{
+  /* Basis — warmes Ivory-Mono */
+  --bg:          #F4F1EA;   /* warmes Ivory */
+  --bg-alt:      #ECE7DB;   /* tiefere Cream-Fläche (alternierende Sektionen) */
+  --bg-deep:     #17211C;   /* Signature-/Footer-Fläche (Tannen-Ink, KEIN reines #000) */
+  --ink:         #1A2420;   /* Haupttext — warmer Tannen-Ink */
+  --ink-soft:    #55605A;   /* Sekundärtext, Captions */
+  --line:        #D8D2C4;   /* Hairline-Border auf Cream */
+  --line-deep:   rgba(244,241,234,.16); /* Hairline auf --bg-deep */
+
+  /* EIN Akzent — tiefes Tannengrün */
+  --accent:      #1F4A38;   /* tiefes Tannengrün (Typo-Emphasis, CTA, Signatur) */
+  --accent-hov:  #163627;   /* dunkler für Hover */
+  --accent-ink:  #F4F1EA;   /* Text auf Akzentfläche */
+  --accent-dark: #9DBBA9;   /* helle Sage-Variante NUR auf --bg-deep (AA-Legibilität) */
+
+  /* System */
+  --max-w: 1200px;
+  --pad-x: clamp(1rem, 4vw, 3rem);
+  --ease:  cubic-bezier(0.65, 0.05, 0.36, 1);  /* EIN Easing (CSS) — KAIVOSS-System */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);   /* Reveals/GSAP power3.out-Äquiv. */
+  --dur:   .6s;
+}
+```
+
+**Kontrast-Nachweis (Ziel AA ≥ 4.5:1, in Aufgabe 5 gemessen):**
+- `--ink #1A2420` auf `--bg #F4F1EA` → ~15:1 ✓
+- `--accent #1F4A38` auf `--bg #F4F1EA` → ~8.5:1 ✓ (auch als Text tauglich)
+- `--accent-ink #F4F1EA` auf `--accent #1F4A38` → ~8.5:1 ✓
+- `--accent-dark #9DBBA9` auf `--bg-deep #17211C` → ~6.5:1 ✓
+- `--ink-soft #55605A` auf `--bg #F4F1EA` → ~5.3:1 ✓ (Captions bestehen AA)
+
+**Foto-Grade (falls Platzhalter mit Bildcharakter):** `grayscale(.6) saturate(.7) contrast(1.03) brightness(.98) sepia(.12)` — KEIN `hue-rotate`, kein flächiger Akzent-Overlay (Farbschema-Verbot). Fotos = hochwertige CSS-Art/SVG/Gradient-Kompositionen mit Editorial-Caption (Ort + Jahr), keine Stock-Downloads.
+
+### Fonts (self-hosted, OFL — nach `/fonts`)
+- **Serif-Emphasis / Display-Akzentwort:** **Fraunces** (variable, high-contrast Didone-Charakter, echtes Italic) → Old-Money-Editorial.
+- **Grotesk (Body, UI, Kicker, Display-Grundsatz):** **Archivo** (neutrale, seriöse Grotesque, gute Weights).
+- Beide OFL, in Aufgabe 1 als `woff2` nach `/fonts/` gebündelt, `font-display: swap`, `@font-face` lokal. **Kein** externer Google-Fonts-Request (DSGVO-Klassiker-Nr.1 vermieden). Barlow Condensed = verboten (Anti-Pattern).
+
+---
+
+## 4 · Seitenstruktur (03-Struktur + 08-Subpages, Kanzlei-Set)
+
+**Seiten (7):** `index.html` · `leistungen-unternehmen.html` · `leistungen-privat.html` · `team.html` · `kontakt.html` · `impressum.html` · `datenschutz.html`
+**Nav (max 5–6 + CTA):** Start · Leistungen (Unternehmen/Privat) · Team · Kontakt · **[CTA: Erstgespräch]** (hervorgehoben, letzter Punkt). Mobile: Overlay-Menü.
+
+### Home — Sektionsfolge (Aufgabe 2)
+1. **Hero** — riesige Display-Typo (clamp), Serif-italic-Emphasis-Wort im Akzent, ruhiger Word-Mask-Entry, EIN CTA.
+2. **Leistungs-Überblick** — 3 Karten → Unterseiten (dezenter Mask-Wipe-Hover).
+3. **Signature-Moment** — gepinntes Zahlen-Statement (Mandate/Jahre/Erstattungsvolumen, fiktiv), Scroll-Count-up once, dezenter Theme-Shift auf `--bg-deep`. **← der EINE Story-Moment.**
+4. **Über-uns-Teaser** — asymmetrisch, Editorial-Caption-Bild (CSS-Art, Ort+Jahr). **← Grid-Bruch.**
+5. **Social Proof** — Mandanten-Zitate, seriös (ruhig rotierend).
+6. **Trust-Band** — Kammern/Qualifikationen als eigene Badges (StBK, DStV-Muster — eigene SVG-Badges, keine fremden Logos).
+7. **CTA-Band → Kontakt** — ruhig, ein Akzent, ein Button.
+8. **Footer** — Rechtslinks + Demo-Zeile.
+
+### Unterseiten-Muster (08-Subpages)
+- **Leistungsseiten (2):** Hero-Statement → Problem/Nutzen → Ablauf in 3 Schritten → FAQ → CTA. Je EIN Fokus (Unternehmen / Privat), H1 einmalig, Meta-Description, JSON-LD `AccountingService`/`LocalBusiness` (fiktiv).
+- **Team:** 3 fiktive Profile, CSS-Art-Porträt-Platzhalter + Captions + Qualifikationen.
+- **Kontakt:** minimales Formular (Name, E-Mail, Anliegen — Datenminimierung), a11y, Submit-Zyklus als Demo-Simulation (kein echter Versand), Anfahrt als eigenes statisches SVG (KEIN Google Maps).
+- **Impressum / Datenschutz:** strukturell vollständig (fiktive Musterdaten, als Demo gekennzeichnet).
+
+---
+
+## 5 · Snippet-Plan (Lab ⭐-Keeper → Slots)
+
+> Nur ⭐-Keeper. „Mirror, never steal": Mechanik/Maße/Motion übernehmen, Tokens statt Lab-Farben, eigene Copy/Assets. Alle DEZENT adaptiert (Niche-Regel).
+
+| Slot | Keeper-ID | Warum / Adaption für DEZENT |
+|---|---|---|
+| **Loader (Signature-Brand-Moment)** | `LDR-003` Monogramm | „W&P"-Monogramm zeichnet sich (stroke), once, ruhig; erfüllt „individueller Loading-Screen". reduced-motion: sofort sichtbar. |
+| **Nav** | `NAV-009` B2B-Seriös (Struktur) + Mechanik `NAV-001`/N2 shrink + N3/NV2 hide-on-down | Seriöse horizontale Bar, Tokens statt Navy/Gold. Shrink+Blur beim Scroll, Hide-on-down/Reveal-up. CTA als letzter Punkt. |
+| **Footer** | `FTR-006` Dark-Flip (Struktur) + `FTR`-Spalten-Stagger (F3) | Deep-Ink-Editorial-Footer (`--bg-deep`, kein Theme-Toggle) mit Spalten-Reveal. Pflicht-Rechtslinks + „Fiktive Demo — Design: Oddomode". |
+| **Hero-Entry** | `HRO-001` Massive-Type Entry (anim ruhig) + Font-Mix `K6` | Word-Mask-Entry, EIN CTA. Serif-italic-Akzentwort. |
+| **Primär-CTA-Button** | `BTN-034` Liquid Cursor Fill → **DEZENT** | Calmed: gerichteter Ink-Wipe-Fill on hover statt Cursor-Liquid, **kein Overshoot** (Primär-Interaktion-Regel). |
+| **Text-Link/Headline** | `TYP-009` Underline-Draw | `scaleX 0→1` origin left, ruhig, Akzent. |
+| **Leistungs-Karten (3)** | `CRD-008` Mask-Wipe-Reveal | Caption via `clip-path inset` enthüllt, Bild `scale 1.03` — editorial, dezent. |
+| **Signature-Moment** | `SEC-001` Theme-Flip (abgeschwächt) + `SOC-004` Case-Zahl-Count-up (T5/C6) | Gepinntes Zahlen-Statement, Count-up once, ruhiger BG/Text-Flip auf `--bg-deep`. Der EINE Story-Moment. |
+| **Über-uns-Bild** | Editorial-Caption-Muster `HRO-002` (Caption-Entry) | CSS-Art-Bild + Caption (Ort+Jahr) `y14→0`, Grid-Bruch. |
+| **Sektions-Naht (die 1 aus SEC)** | `SEC-004` Parallax-Naht | Ruhige Parallax-Naht (anim-discard = leise), nur `transform`. |
+| **Social Proof** | `SOC-009` Rotierendes Zitat (seriös) | Ruhig rotierende Mandanten-Zitate, `role=status`. |
+| **Trust-Band** | `TRB-007` DSGVO/Made-in-DE + `TRB-004` Zertifikat-Chips (Draw-Border, ruhig) | Eigene seriöse Kammer/Qualifikations-Badges (SVG), Hover `translateY(-2px)`. |
+| **Formular (Kontakt)** | `FRM-002` Underline-Draw-Inputs + `FRM-003` Live-Validierung (kein Shake) + `BTN-123` Submit→Success (Demo) | Datenminimiert, a11y, ruhiger Submit-Zyklus ohne echten Versand. |
+
+**Motion-Budget-Zählung Home (Ziel 4–5):** (1) Hero-Word-Mask · (2) Nav shrink+hide · (3) Signature Theme-Flip+Count-up · (4) Karten-Mask-Wipe-Hover · (5) Parallax-Naht. Loader zählt als Brand-Moment separat, Footer-Reveal ist Standard-once. Alles EIN Easing-System, kein Overshoot.
+
+---
+
+## 6 · Guardrails (global, in jeder Aufgabe geprüft)
+`body{overflow-x:clip}` (nie html) · `100dvh` statt `100vh` · EIN Easing · reduced-motion + No-JS voll bedienbar · 0 Console-Errors · Touch ≥44px · WCAG AA · Grid-Kinder `min-width:0` · Fonts self-hosted · 0 externe Requests außer GSAP+Lenis CDN · keine Cookies · Captions (Ort+Jahr) · 90% Mono + EIN Akzent.
+
+## 7 · Aufgaben-Status
+- [x] **Aufgabe 0** — Profil, Referenzwerte, Tokens, Struktur, Snippet-Plan → dieser Plan. *(Opus 4.8 High)*
+- [ ] Aufgabe 1 — Gerüst + Nav + Footer *(Sonnet 5)*
+- [ ] Aufgabe 2 — Home *(Sonnet 5)*
+- [ ] Aufgabe 3 — Unterseiten *(Sonnet 5)*
+- [ ] Aufgabe 4 — Craft-Pass + Abnahme *(Opus 4.8 High)*
+- [ ] Aufgabe 5 — DSGVO/Security-Gate *(Sonnet 5)*
+- [ ] Abschluss — Deploy + Vault zurückfüllen *(Sonnet 5)*
+</content>
+</invoke>
