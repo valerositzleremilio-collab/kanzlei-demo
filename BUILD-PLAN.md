@@ -155,12 +155,48 @@ Begründung aus Teardown: Warm-Gold liest als Luxus-*Brand* (KOENIGSEGG-Welt); *
 ## 6 · Guardrails (global, in jeder Aufgabe geprüft)
 `body{overflow-x:clip}` (nie html) · `100dvh` statt `100vh` · EIN Easing · reduced-motion + No-JS voll bedienbar · 0 Console-Errors · Touch ≥44px · WCAG AA · Grid-Kinder `min-width:0` · Fonts self-hosted · 0 externe Requests außer GSAP+Lenis CDN · keine Cookies · Captions (Ort+Jahr) · 90% Mono + EIN Akzent.
 
+## 6b · Abnahme-Protokoll (Aufgabe 4, Opus 4.8 High)
+
+**Prüfmethode:** System-Chrome headless via Puppeteer-Core (Extension war nicht verbunden) — echte gerenderte Screenshots @1440 + @390, DOM-Messung statt Thumbnail-Schätzung, reduced-motion-Emulation für Endzustände, PNG-Pixel-Sampling für Farb-/Kontrastbelege.
+
+**Craft-Checkliste (07-Design + TASTE v3 + KAIVOSS-BAR):**
+- [x] Display-Typo groß (`clamp` bis 7rem), Grotesk (Archivo) + EIN Serif-italic-Emphasis-Wort (Fraunces) im Akzent — auf jeder Seite ein Emphasis-Wort (spürt / geordnet / verständlich / ein / sprechen / Erstgespräch).
+- [x] EIN Akzent (Tannengrün) konsequent über alle Sektionen; 90 % warmes Mono. Pixel-verifiziert.
+- [x] Grid ≥1× gebrochen: About-Teaser-Panel bleedet full-bleed zum Viewport-Rand (`margin-left: calc(50% - 50vw)`).
+- [x] Captions (Ort + Jahr) auf allen Bild-/Porträt-Platzhaltern (Team, About, Anfahrt).
+- [x] Weißraum großzügig, editorialer Rhythmus (`--section-pad` clamp 5–10rem).
+- [x] Signature-Moment: EIN gepinntes Zahlen-Statement mit Theme-Flip auf Deep-Ink (`#17211C`, pixel-belegt) + Count-up once.
+- [x] **WCAG AA numerisch belegt** — alle Text/BG-Paare ≥4,5:1 (niedrigstes 5,32:1 = Footer-Copyright auf Deep-Ink; Body 14,13:1; ink-soft-Captions 5,31–5,80:1; sage Zahlen auf Deep-Ink 7,96:1).
+
+**Motion-Review (TASTE R10 / KAIVOSS-BAR):**
+- [x] Kein Overshoot (kein back/elastic) — Primär-CTA = gerichteter Ink-Wipe ohne Bounce.
+- [x] Motion funktional/bedeutungsvoll: Wortmaske (Entry), Count-up (Daten), Theme-Flip (Sektionsnaht), Mask-Wipe (Reveal), Parallax (Tiefe), Chip-Draw (Reveal), Submit-Zyklus (Feedback).
+- [x] Reduced-motion: Endzustände sofort & vollständig (headless verifiziert — Signature settled instant auf Deep-Ink, alle Inhalte sichtbar).
+
+**Verifiziert (headless, Belege):**
+- [x] 0 Console-/Page-Errors auf allen 7 Seiten.
+- [x] 0 horizontaler Overflow (`scrollWidth == viewport`) @1440 UND @390; Hero-Elemente `scrollW == clientW` (kein Text-Clipping).
+- [x] Externe Requests = exakt 3 CDN-Dateien (GSAP + ScrollTrigger + Lenis). Keine Google-Fonts, keine sonstigen Externals → Fonts self-hosted bestätigt.
+- [x] Mobile-Menü: Vollbild-Overlay, ×/Esc/Link schließt, Fokus-Management, Marke + × über dem Overlay lesbar.
+- [x] Kontaktformular: Leer-Submit → 3 Feldfehler; valide → loading → success-Zyklus (Demo, kein echter Versand).
+
+**Durchfaller nachgebessert (in diesem Pass gefunden & gefixt):**
+1. **Mobile-Overlay nur header-hoch** — `backdrop-filter` auf `.site-header` bildete einen Containing-Block und fing das `position:fixed`-Overlay. Fix: Blur/BG auf `.site-header::before` ausgelagert → Overlay füllt jetzt den Viewport (gemessen 800=800).
+2. **Marke + ×-Button vom Overlay verdeckt** (gleicher Stacking-Context, z-index 99). Fix: Toggle + Marke z-index 101 über dem Overlay, auf Dunkel umgefärbt; × wieder klickbar (elementFromPoint-verifiziert).
+3. **FAQ-Item 3 ohne +/−-Icon** auf beiden Leistungsseiten — Icon-Span ergänzt.
+4. **Rest-Em-Dashes im Fließtext** (Hero-Lead + Footer-Claim, 8 Dateien) → Doppelpunkt, konsistent zur entschärften Copy-Stimme.
+
+**„Würde das auf godly.website bestehen?" — ehrliche Antwort:**
+Für die Nische (seriöse Steuerkanzlei, Effekt-Level *dezent*, „Vertrauen vor Show") ist die Ausführung Top-Class: editoriale Typo, ein gesperrter Akzent, echter Grid-Bruch, funktionale Motion ohne Overshoot, vollständige a11y mit belegten Zahlen, 0 Errors, self-hosted Fonts. godly.website kuratiert oft maximalistisch-experimentelle Showcases — dieses Projekt ist *bewusst* zurückgenommen (Brief verbietet Show), also kein SOTD-Spektakel, sondern erstklassige Restraint. Als Portfolio-Stück und als Kanzlei-Seite besteht es. Bewusste Trade-offs (kein Defekt): Leistungskarten schlicht (keine Zahlen-/Icon-Deko, um den „3-Karten"-Tell zu meiden), Team-Porträts als CSS-Art statt Foto (Brief-Vorgabe), Kicker-Rhythmus je Sektion (07-Design-Regel 7, in dieser Nische ordnend statt templatehaft).
+
+---
+
 ## 7 · Aufgaben-Status
 - [x] **Aufgabe 0** — Profil, Referenzwerte, Tokens, Struktur, Snippet-Plan → dieser Plan. *(Opus 4.8 High)*
 - [x] **Aufgabe 1** — Gerüst + Nav + Footer. 7 Seiten, self-hosted Fonts, Nav (NAV-009+N2+N3/NV2), Footer (FTR-006+F3), Lenis+GSAP-Setup, No-JS-Fallback (html.js-Gate). *(Sonnet 5)*
 - [x] **Aufgabe 2** — Home. Alle 8 Sektionen, Motion-Budget exakt 5 (Hero-Wortmaske, Karten-Mask-Wipe, Signature Theme-Flip+Count-up, Parallax-Tiefe, Trust-Chips-Draw). *(Sonnet 5)*
 - [x] **Aufgabe 3** — Unterseiten. 2 Leistungsseiten (Hero→Problem/Nutzen→Ablauf→FAQ→CTA, JSON-LD), Team (3 CSS-Art-Profile), Kontakt (Formular+Submit-Zyklus+Anfahrt-SVG). *(Sonnet 5)*
-- [ ] Aufgabe 4 — Craft-Pass + Abnahme *(Opus 4.8 High)*
+- [x] **Aufgabe 4** — Craft-Pass + Abnahme (headless-Chrome-Review, Checkliste bestanden, 4 Durchfaller gefixt → §6b). *(Opus 4.8 High)*
 - [ ] Aufgabe 5 — DSGVO/Security-Gate *(Sonnet 5)*
 - [ ] Abschluss — Deploy + Vault zurückfüllen *(Sonnet 5)*
 </content>
