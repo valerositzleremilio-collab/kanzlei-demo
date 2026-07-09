@@ -7,6 +7,7 @@
   <title>Kontakt — WALDNER &amp; PART Steuerberatung</title>
   <meta name="description" content="Kontakt zu WALDNER & PART Steuerberatung in Villingen-Schwenningen — Erstgespräch vereinbaren. Fiktive Demo-Kanzlei.">
   <meta name="theme-color" content="#F4F1EA">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self';">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preload" href="fonts/Archivo-Variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/Fraunces-Italic-Variable.woff2" as="font" type="font/woff2" crossorigin>
@@ -72,12 +73,12 @@
         <p class="privacy-note">Mit dem Absenden stimmen Sie der Verarbeitung Ihrer Angaben gemäß unserer <a href="datenschutz.html" class="link-draw">Datenschutzerklärung</a> zu. Diese Demo überträgt keine echten Daten, das Formular ist eine reine Funktions-Simulation.</p>
         <button type="submit" class="btn btn--primary submit-btn" data-state="idle" aria-live="polite">
           <span class="submit-btn__label">Nachricht senden</span>
-          <span class="submit-btn__spinner" aria-hidden="true">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="2" stroke-dasharray="28" stroke-dashoffset="10"/></svg>
+          <span class="submit-btn__spinner">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="2" stroke-dasharray="28" stroke-dashoffset="10"/></svg>
             Wird gesendet …
           </span>
           <span class="submit-btn__success">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.2 11.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5L6.2 11.5L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             Gesendet
           </span>
         </button>

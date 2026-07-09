@@ -244,7 +244,13 @@
 .contact-info { min-width: 0; }
 .contact-info h2 { font-size: var(--fs-h3); }
 .contact-info address { margin-top: 1rem; font-style: normal; color: var(--ink-soft); line-height: 1.9; }
-.contact-info address a { color: var(--ink); font-weight: 600; }
+.contact-info address a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--ink);
+  font-weight: 600;
+}
 
 .anfahrt { margin-top: 2rem; }
 .anfahrt svg { width: 100%; height: auto; border: 1px solid var(--line); border-radius: var(--radius-md); }

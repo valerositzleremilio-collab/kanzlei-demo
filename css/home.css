@@ -208,7 +208,13 @@ html.js .mask-word > span { transform: translateY(105%); }
 .about-teaser__text { padding-right: var(--pad-x); min-width: 0; }
 .about-teaser__text h2 { margin-top: 1rem; max-width: 12ch; }
 .about-teaser__text p { margin-top: 1.5rem; color: var(--ink-soft); }
-.about-teaser__text .link-draw { display: inline-block; margin-top: 1.5rem; font-weight: 600; }
+.about-teaser__text .link-draw {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 1.5rem;
+  font-weight: 600;
+}
 
 @media (max-width: 860px) {
   .about-teaser__grid { grid-template-columns: 1fr; }

@@ -191,13 +191,49 @@ Für die Nische (seriöse Steuerkanzlei, Effekt-Level *dezent*, „Vertrauen vor
 
 ---
 
+## 6c · DSGVO/Security-Gate-Protokoll (Aufgabe 5, Pflicht vor Deploy)
+
+**Prüfmethode:** dieselbe headless-Chrome-Pipeline (Puppeteer-Core auf System-Chrome) wie in Aufgabe 4, diesmal für die 09-Checkliste + 10-Sicherheit. Alle Befunde unten sind gemessen, nicht angenommen.
+
+### Pflichtseiten
+- [x] **Impressum** (§5 DDG): Name/Firma, ladungsfähige Anschrift, E-Mail + Telefon, USt-ID, Kammer — vollständig, klar als fiktive Demo gekennzeichnet, Footer-Link auf allen 7 Seiten.
+- [x] **Datenschutzerklärung** (Art. 13 DSGVO): Verantwortlicher, Hosting, Cookies/Tracking, Fonts, CDN-Bibliotheken, Kontaktformular, Betroffenenrechte — jeder eingebundene Dienst (GitHub Pages, jsDelivr) einzeln genannt, Footer-Link auf allen 7 Seiten.
+
+### Technische Abmahngründe eliminiert
+- [x] **Fonts self-hosted, verifiziert doppelt:** (1) `@font-face src` zeigt ausschließlich auf `/fonts/*.woff2`; (2) `document.fonts` meldet `Archivo`/`Fraunces` als `status: "loaded"` und Computed-Style bestätigt die Schrift wird tatsächlich gerendert (nicht nur deklariert und auf System-Font zurückgefallen).
+- [x] **0 externe Requests außer den 2 CDN-Bibliotheken** — Performance-Log über alle 7 Seiten gemessen: ausschließlich `gsap.min.js`, `ScrollTrigger.min.js` (GSAP), `lenis.min.js` (Lenis) von `cdn.jsdelivr.net`. Kein Google-Fonts-Request, keine Analytics, keine Maps, keine Social-Embeds.
+- [x] **Keine Cookies, kein Tracking:** Nach Besuch aller 7 Seiten **und** voller Interaktion (Mobile-Menü öffnen/schließen, FAQ-Accordion, Formular ausfüllen + absenden) gemessen: `document.cookie` = leer, CDP `cookies()` = `[]`, `localStorage`/`sessionStorage` = je 0 Einträge. Kein Consent-Banner nötig (§25 TTDSG) — korrekt, da keine Cookies gesetzt werden.
+- [x] **Kontaktformular ohne echte Datenübertragung:** Netzwerk-Log direkt nach Klick auf „Nachricht senden" (mit validen Testdaten) gemessen: **0 Requests ausgelöst**, keine Navigation, Formular bleibt auf derselben Seite. Der sichtbare idle→loading→success-Zyklus ist rein clientseitig (`setTimeout`), TLS-Frage entfällt, da nichts gesendet wird — im Datenschutztext als „reine Funktions-Simulation" klar benannt.
+- [x] **HTTPS:** wird von GitHub Pages für `*.github.io` automatisch erzwungen (kein eigenes Zutun nötig, „Enforce HTTPS" ist Pages-Standard) — lokal nicht testbar, hier dokumentiert statt vorgetäuscht.
+- [x] **Hosting-AVV:** GitHub als Auftragsverarbeiter in der Datenschutzerklärung genannt; realer Vertragsabschluss ist Aufgabe des Kunden bei echtem Go-Live (Demo weist explizit darauf hin: „Voraussetzung für den produktiven Einsatz").
+- [x] **Bilder/Assets:** keine Stock-/Fremd-Assets im Projekt — ausschließlich selbst geschriebene Inline-SVGs und CSS-Kompositionen (`grep '<img'` über alle 7 Seiten = 0 Treffer). Kein Urheberrechts-Doppelrisiko.
+- [x] **Barrierefreiheit-Basics (BFSG):**
+  - Kontrast AA: siehe §6b, alle Paare ≥4,5:1 (niedrigstes 5,32:1).
+  - Alt-Texte/ARIA: Audit über alle `<svg>`-Elemente aller 7 Seiten. Ein echter Fund: die zwei Icon-SVGs im Formular-Submit-Button (Spinner, Erfolgs-Haken) hatten kein `aria-hidden`, der Spinner-Fund war sogar invers falsch (das gesamte `aria-hidden="true"`-Span verschluckte auch den sichtbaren Status-Text „Wird gesendet …" und hätte die `aria-live="polite"`-Ansage stumm geschaltet). Gefixt: `aria-hidden="true"` sitzt jetzt nur auf dem dekorativen `<svg>`, der Statustext bleibt für Screenreader hörbar.
+  - Tastatur/Touch: native `<details>`/`<summary>` für FAQ (voll tastaturbedienbar ohne JS), Mobile-Menü mit Fokus-Management + Esc.
+  - **Touch-Targets ≥44px:** automatisiert über alle interaktiven Elemente (`a, button, input, textarea, summary`) auf 390px gemessen. Zwei echte Lücken gefunden und gefixt: der Steht-für-sich-„Team kennenlernen"-Link (About-Teaser) und die Telefon-/E-Mail-Links im Kontakt-Info-Block hatten keine Mindesthöhe (Footer hatte sie bereits, diese Stelle nicht). Eine verbleibende Meldung („Datenschutzerklärung"-Link im Privacy-Note-Fließtext, 24px) ist **kein Fehler**, sondern die von WCAG 2.5.8 (Target Size Minimum) explizit ausgenommene Kategorie „Inline: Ziel sitzt in einem Satz/Textblock" — ein Fließtext-Link kann nicht auf 44px aufgeblasen werden, ohne die Typografie zu zerstören.
+
+### Security-Header (GitHub-Pages-Möglichkeiten)
+- [x] **Content-Security-Policy per `<meta http-equiv>`** auf allen 7 Seiten ergänzt (GitHub Pages erlaubt keine eigenen HTTP-Response-Header, Meta-CSP ist die einzig verfügbare Option für reines Static-Hosting):
+  `default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self';`
+  - `connect-src 'none'` und `frame-src/object-src 'none'` sind bewusst maximal restriktiv — es gibt im ganzen Projekt keinen fetch/XHR/iframe/embed, die Policy erzwingt das jetzt auch auf Browser-Ebene, nicht nur per Konvention.
+  - `'unsafe-inline'` bei `script-src`/`style-src` ist ein bewusster, dokumentierter Kompromiss (keine Build-Pipeline für Nonces/Hashes über 7 statische Seiten hinweg mit unterschiedlichem JSON-LD-Inhalt); vertretbar, da keine nutzergenerierten Inhalte irgendwo reflektiert werden (kein XSS-Vektor vorhanden).
+  - **Verifiziert:** alle 7 Seiten mit aktiver CSP geladen, GSAP/ScrollTrigger/Lenis laden weiterhin (`typeof window.gsap !== 'undefined'` etc. = true überall), **0 CSP-Violations** in der Konsole gemessen.
+
+### Zusammenfassung der in diesem Gate gefundenen und gefixten Lücken
+1. Zwei Formular-Icon-SVGs ohne korrektes `aria-hidden` (eines davon verschluckte sogar den Live-Status-Text).
+2. Zwei Touch-Targets unter 44px (About-Teaser-Link, Kontakt-Adresslinks).
+3. CSP-Header fehlte komplett → jetzt auf allen 7 Seiten, verifiziert ohne Violations.
+
+---
+
 ## 7 · Aufgaben-Status
 - [x] **Aufgabe 0** — Profil, Referenzwerte, Tokens, Struktur, Snippet-Plan → dieser Plan. *(Opus 4.8 High)*
 - [x] **Aufgabe 1** — Gerüst + Nav + Footer. 7 Seiten, self-hosted Fonts, Nav (NAV-009+N2+N3/NV2), Footer (FTR-006+F3), Lenis+GSAP-Setup, No-JS-Fallback (html.js-Gate). *(Sonnet 5)*
 - [x] **Aufgabe 2** — Home. Alle 8 Sektionen, Motion-Budget exakt 5 (Hero-Wortmaske, Karten-Mask-Wipe, Signature Theme-Flip+Count-up, Parallax-Tiefe, Trust-Chips-Draw). *(Sonnet 5)*
 - [x] **Aufgabe 3** — Unterseiten. 2 Leistungsseiten (Hero→Problem/Nutzen→Ablauf→FAQ→CTA, JSON-LD), Team (3 CSS-Art-Profile), Kontakt (Formular+Submit-Zyklus+Anfahrt-SVG). *(Sonnet 5)*
 - [x] **Aufgabe 4** — Craft-Pass + Abnahme (headless-Chrome-Review, Checkliste bestanden, 4 Durchfaller gefixt → §6b). *(Opus 4.8 High)*
-- [ ] Aufgabe 5 — DSGVO/Security-Gate *(Sonnet 5)*
+- [x] **Aufgabe 5** — DSGVO/Security-Gate. Vollständige 09-Checkliste belegt (Cookies/Storage/Network gemessen, CSP ergänzt+verifiziert, 3 a11y-Lücken gefixt) → §6c. *(Sonnet 5)*
 - [ ] Abschluss — Deploy + Vault zurückfüllen *(Sonnet 5)*
 </content>
 </invoke>
