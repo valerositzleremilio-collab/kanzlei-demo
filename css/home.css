@@ -308,6 +308,64 @@ html.js .mask-word > span { transform: translateY(105%); }
   .proof__grid { grid-template-columns: 1fr; gap: 2rem; }
 }
 
+/* ---------- So arbeiten wir (echte Sequenz, 01/02/03 gerechtfertigt) ---------- */
+.home-steps { padding-bottom: var(--section-pad); }
+
+.home-steps__heading { margin-top: .85rem; max-width: 18ch; }
+
+.home-steps__grid {
+  margin-top: 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.home-steps__item { min-width: 0; }
+
+.home-steps__num {
+  display: block;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--accent);
+}
+
+.home-steps__item h3 { margin-top: .85rem; font-size: 1.15rem; }
+.home-steps__item p { margin-top: .6rem; color: var(--ink-soft); font-size: .95rem; }
+
+.home-steps__links { margin-top: 2.5rem; font-size: .92rem; color: var(--ink-soft); }
+.home-steps__links .link-draw { font-weight: 600; color: var(--ink); }
+
+@media (max-width: 780px) {
+  .home-steps__grid { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+/* ---------- Kontakt-Kurzinfo (vor CTA-Band) ---------- */
+.contact-strip { padding-bottom: clamp(3rem, 7vh, 4.5rem); }
+
+.contact-strip__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+  padding: clamp(2rem, 5vw, 3rem) 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.contact-strip__item { min-width: 0; }
+.contact-strip__item p { margin-top: .75rem; color: var(--ink-soft); line-height: 1.8; }
+.contact-strip__item .link-draw {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+@media (max-width: 780px) {
+  .contact-strip__grid { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+
 /* ---------- Trust-Band (Zertifikat-Chips) ---------- */
 .trust { padding-bottom: var(--section-pad); }
 
