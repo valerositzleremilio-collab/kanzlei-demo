@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/nav.css">
   <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -43,11 +44,137 @@
   </header>
 
   <main id="main">
-    <section class="wrap" style="padding-top: clamp(9rem, 20vh, 12rem); padding-bottom: var(--section-pad);">
-      <span class="kicker">Steuerberatung · Villingen-Schwenningen</span>
-      <h1 style="margin-top: 1rem; max-width: 16ch;">Klarheit, die man <span class="em">spürt</span>.</h1>
-      <p class="wrap" style="padding-inline:0; margin-top: 1.5rem; font-size: var(--fs-lead); color: var(--ink-soft);">Gerüst steht — Hero, Leistungen, Signature-Moment und die restlichen Sektionen folgen in Aufgabe 2.</p>
+
+    <!-- Hero — HRO-001 Wortmaske, EIN CTA -->
+    <section class="hero wrap">
+      <span class="kicker hero__kicker">Steuerberatung · Villingen-Schwenningen</span>
+      <h1 class="hero__title">
+        <span class="mask-word"><span>Klarheit,</span></span>
+        <span class="mask-word"><span>die</span></span>
+        <span class="mask-word"><span>man</span></span>
+        <span class="mask-word"><span class="em">spürt.</span></span>
+      </h1>
+      <p class="hero__lead">Steuerberatung für Unternehmen und Privatmandanten — ruhig, verbindlich, auf den Punkt. Seit 2008 in Villingen-Schwenningen.</p>
+      <a href="kontakt.html" class="btn btn--primary hero__cta">Erstgespräch vereinbaren</a>
     </section>
+
+    <!-- Leistungs-Überblick — CRD-008 Mask-Wipe-Reveal, dezent -->
+    <section class="services wrap" aria-label="Unsere Leistungen">
+      <div class="services__grid">
+        <a href="leistungen-unternehmen.html" class="service-card">
+          <div class="service-card__base">
+            <h3>Für Unternehmen</h3>
+            <p>Jahresabschluss, Lohnbuchhaltung und Steuerstrategie, damit Sie sich aufs Kerngeschäft konzentrieren können.</p>
+            <span class="link-draw">Leistungen ansehen</span>
+          </div>
+          <div class="service-card__reveal" aria-hidden="true">Für Unternehmen →</div>
+        </a>
+        <a href="leistungen-privat.html" class="service-card">
+          <div class="service-card__base">
+            <h3>Für Privat</h3>
+            <p>Einkommensteuer, Kapitalanlagen und Vorsorge: verständlich erklärt, zuverlässig umgesetzt.</p>
+            <span class="link-draw">Leistungen ansehen</span>
+          </div>
+          <div class="service-card__reveal" aria-hidden="true">Für Privat →</div>
+        </a>
+        <a href="team.html" class="service-card">
+          <div class="service-card__base">
+            <h3>Team</h3>
+            <p>Drei Steuerberater, ein Anspruch: persönliche Betreuung auf Augenhöhe.</p>
+            <span class="link-draw">Team kennenlernen</span>
+          </div>
+          <div class="service-card__reveal" aria-hidden="true">Team →</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Signature-Moment — SEC-001 Theme-Flip (abgeschwächt, einmalig) + SOC-004 Count-up -->
+    <section class="signature" id="signatureSection">
+      <div class="wrap signature__inner">
+        <span class="kicker signature__kicker">Seit 2008 in Villingen-Schwenningen</span>
+        <div class="signature__stats">
+          <div class="stat">
+            <span class="stat__num" data-count="18">0</span>
+            <span class="stat__label">Jahre Erfahrung</span>
+          </div>
+          <div class="stat">
+            <span class="stat__num" data-count="340" data-suffix="+">0</span>
+            <span class="stat__label">betreute Mandate</span>
+          </div>
+          <div class="stat">
+            <span class="stat__num" data-count="2.4" data-decimals="1" data-prefix="€ " data-suffix=" Mio.">€ 0 Mio.</span>
+            <span class="stat__label">gesichertes Erstattungsvolumen p.a.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Über-uns-Teaser — Grid-Bruch (Bild bleedet zum Rand) + SEC-004 Parallax-Tiefe -->
+    <section class="about-teaser">
+      <div class="about-teaser__grid">
+        <figure class="about-teaser__figure">
+          <div class="about-teaser__art">
+            <div class="art-bg"></div>
+            <svg class="art-lines" viewBox="0 0 400 500" fill="none" aria-hidden="true">
+              <circle cx="330" cy="120" r="190" stroke="currentColor" stroke-width="1"/>
+              <path d="M120 340 L200 210 L280 340 M160 340 L200 265 L240 340" stroke="currentColor" stroke-width="1"/>
+            </svg>
+            <div class="art-grain"></div>
+          </div>
+          <figcaption>Kanzleisitz · Rietstraße 12 · Villingen-Schwenningen</figcaption>
+        </figure>
+        <div class="about-teaser__text">
+          <span class="kicker">Über uns</span>
+          <h2>Steuerberatung, die zuhört.</h2>
+          <p>Seit 2008 begleiten wir Unternehmen und Privatmandanten in der Region: klare Ansagen statt Fachchinesisch, verlässliche Termine statt langem Warten. Drei Steuerberater, ein Team, ein Anspruch.</p>
+          <a href="team.html" class="link-draw">Team kennenlernen</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Social Proof — SOC-009 rotierendes Zitat -->
+    <section class="proof">
+      <div class="proof__inner">
+        <div class="proof__quote" role="status" aria-live="polite">
+          <blockquote>
+            <p class="proof__text" id="proofText">„Endlich eine Kanzlei, die uns erklärt, warum eine Zahl so ist, wie sie ist.“</p>
+            <cite class="proof__who" id="proofWho">M. Herrmann · Geschäftsführerin</cite>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust-Band — TRB-004 Draw-Border + TRB-007 Hover-Lift, zusammengeführt -->
+    <section class="trust wrap">
+      <span class="kicker">Vertrauen &amp; Qualifikation</span>
+      <ul class="trust__chips">
+        <li class="chip">
+          <svg class="chip__border" preserveAspectRatio="none" aria-hidden="true"><rect x="1" y="1" width="98%" height="88%" rx="10"/></svg>
+          <svg class="chip__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5L6.2 11.5L13 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Mitglied Steuerberaterkammer
+        </li>
+        <li class="chip">
+          <svg class="chip__border" preserveAspectRatio="none" aria-hidden="true"><rect x="1" y="1" width="98%" height="88%" rx="10"/></svg>
+          <svg class="chip__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5L6.2 11.5L13 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          DSGVO-konform
+        </li>
+        <li class="chip">
+          <svg class="chip__border" preserveAspectRatio="none" aria-hidden="true"><rect x="1" y="1" width="98%" height="88%" rx="10"/></svg>
+          <svg class="chip__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5L6.2 11.5L13 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          GoBD-konform
+        </li>
+      </ul>
+    </section>
+
+    <!-- CTA-Band -->
+    <section class="cta-band wrap">
+      <div class="cta-band__inner">
+        <h2>Bereit für ein <span class="em">Erstgespräch</span>?</h2>
+        <p>Unverbindlich, persönlich, ohne Umwege. Wir melden uns innerhalb eines Werktags.</p>
+        <a href="kontakt.html" class="btn btn--primary">Termin anfragen</a>
+      </div>
+    </section>
+
   </main>
 
   <footer class="site-footer" id="siteFooter">
@@ -96,5 +223,6 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/home.js"></script>
 </body>
 </html>
