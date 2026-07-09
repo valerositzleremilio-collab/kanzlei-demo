@@ -159,7 +159,7 @@ Begründung aus Teardown: Warm-Gold liest als Luxus-*Brand* (KOENIGSEGG-Welt); *
 - [x] **Aufgabe 0** — Profil, Referenzwerte, Tokens, Struktur, Snippet-Plan → dieser Plan. *(Opus 4.8 High)*
 - [x] **Aufgabe 1** — Gerüst + Nav + Footer. 7 Seiten, self-hosted Fonts, Nav (NAV-009+N2+N3/NV2), Footer (FTR-006+F3), Lenis+GSAP-Setup, No-JS-Fallback (html.js-Gate). *(Sonnet 5)*
 - [x] **Aufgabe 2** — Home. Alle 8 Sektionen, Motion-Budget exakt 5 (Hero-Wortmaske, Karten-Mask-Wipe, Signature Theme-Flip+Count-up, Parallax-Tiefe, Trust-Chips-Draw). *(Sonnet 5)*
-- [ ] Aufgabe 3 — Unterseiten *(Sonnet 5)*
+- [x] **Aufgabe 3** — Unterseiten. 2 Leistungsseiten (Hero→Problem/Nutzen→Ablauf→FAQ→CTA, JSON-LD), Team (3 CSS-Art-Profile), Kontakt (Formular+Submit-Zyklus+Anfahrt-SVG). *(Sonnet 5)*
 - [ ] Aufgabe 4 — Craft-Pass + Abnahme *(Opus 4.8 High)*
 - [ ] Aufgabe 5 — DSGVO/Security-Gate *(Sonnet 5)*
 - [ ] Abschluss — Deploy + Vault zurückfüllen *(Sonnet 5)*
