@@ -157,7 +157,7 @@ Begründung aus Teardown: Warm-Gold liest als Luxus-*Brand* (KOENIGSEGG-Welt); *
 
 ## 7 · Aufgaben-Status
 - [x] **Aufgabe 0** — Profil, Referenzwerte, Tokens, Struktur, Snippet-Plan → dieser Plan. *(Opus 4.8 High)*
-- [ ] Aufgabe 1 — Gerüst + Nav + Footer *(Sonnet 5)*
+- [x] **Aufgabe 1** — Gerüst + Nav + Footer. 7 Seiten, self-hosted Fonts, Nav (NAV-009+N2+N3/NV2), Footer (FTR-006+F3), Lenis+GSAP-Setup, No-JS-Fallback (html.js-Gate). *(Sonnet 5)*
 - [ ] Aufgabe 2 — Home *(Sonnet 5)*
 - [ ] Aufgabe 3 — Unterseiten *(Sonnet 5)*
 - [ ] Aufgabe 4 — Craft-Pass + Abnahme *(Opus 4.8 High)*
