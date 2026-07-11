@@ -245,6 +245,12 @@ html.js .mask-word > span { transform: translateY(105%); }
 .about-teaser__art {
   position: relative;
   aspect-ratio: 4 / 5;
+  /* BUGFIX: Full-Bleed-Breite (negativer margin-left auf .about-teaser__figure)
+     addiert sich bei width:auto zur Breite (Grid-Box-Formel), nicht nur zur
+     Position — bei fixem 4:5-Portrait-Verhältnis lief die Sektion dadurch auf
+     ~2.8x Viewport-Höhe. max-height kappt das, aspect-ratio bleibt auf schmalen
+     (Mobile-1-Spalten-)Layouts wirksam, wo die Breite die Höhe nicht sprengt. */
+  max-height: min(70dvh, 620px);
   background: var(--bg-deep);
   overflow: hidden;
 }
