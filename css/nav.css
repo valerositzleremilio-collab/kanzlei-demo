@@ -37,6 +37,55 @@
 
 .site-header.is-hidden { transform: translateY(-100%); }
 
+/* Fix-Pass Aufgabe 3: Header über der dunklen Hero-Bühne (Home) transparent + invertiert
+   (helle Schrift auf Dunkel lesbar), beim Scroll dezent solide (Standard-Header-Karte). Nur
+   body.has-dark-hero (Home) betroffen — Unterseiten mit hellem Hero bleiben unverändert. */
+body.has-dark-hero .site-header:not(.is-scrolled)::before {
+  background: transparent;
+  backdrop-filter: blur(0px);
+}
+body.has-dark-hero .site-header:not(.is-scrolled) .brand {
+  color: var(--ink-inv);
+}
+body.has-dark-hero .site-header:not(.is-scrolled) .brand__amp,
+body.has-dark-hero .site-header:not(.is-scrolled) .brand__word small {
+  color: var(--accent-dark);
+}
+body.has-dark-hero .site-header:not(.is-scrolled) .site-nav__list a:not(.btn) {
+  color: var(--ink-inv-soft);
+}
+/* Höhere Spezifität als die a:not(.btn)-Regel oben (zusätzlicher Attribut-Selektor auf
+   demselben :not(.btn)) — sonst gewinnt bei gleicher Spezifität die spätere Regel und der
+   Aktiv-Zustand-Link wirkt genauso gedämpft wie unbesuchte Links (per DOM-Test gefunden). */
+body.has-dark-hero .site-header:not(.is-scrolled) .site-nav__list a:not(.btn)[aria-current="page"],
+body.has-dark-hero .site-header:not(.is-scrolled) .site-nav__list a:not(.btn):hover,
+body.has-dark-hero .site-header:not(.is-scrolled) .site-nav__list a:not(.btn):focus-visible {
+  color: var(--ink-inv);
+}
+body.has-dark-hero .site-header:not(.is-scrolled) .site-nav__list a[aria-current="page"]::after {
+  background: var(--accent-dark);
+}
+body.has-dark-hero .site-header:not(.is-scrolled) .btn--primary {
+  background: var(--accent-dark);
+  color: var(--bg-deep);
+}
+body.has-dark-hero .site-header:not(.is-scrolled) .btn--primary::before {
+  background: var(--accent-dark-hov);
+}
+body.has-dark-hero .site-header:not(.is-scrolled) .nav-toggle {
+  border-color: var(--line-deep);
+}
+body.has-dark-hero .site-header:not(.is-scrolled) .nav-toggle__bars,
+body.has-dark-hero .site-header:not(.is-scrolled) .nav-toggle__bars::before,
+body.has-dark-hero .site-header:not(.is-scrolled) .nav-toggle__bars::after {
+  background: var(--ink-inv);
+}
+/* Fokus-Ring auf Bronze (--accent) hätte ~2.5:1 auf der dunklen Hero-Bühne (< WCAG 3:1
+   für Nicht-Text-UI) — auf die helle Messing-Variante umschalten, solange transparent. */
+body.has-dark-hero .site-header:not(.is-scrolled) :focus-visible {
+  outline-color: var(--accent-dark);
+}
+
 .site-header__inner {
   display: flex;
   align-items: center;
@@ -56,7 +105,7 @@
   letter-spacing: .04em;
   text-transform: uppercase;
   color: var(--ink);
-  transition: transform var(--dur) var(--ease-out);
+  transition: transform var(--dur) var(--ease-out), color var(--dur) var(--ease-out);
 }
 
 .site-header.is-scrolled .brand { transform: scale(.94); transform-origin: left center; }
@@ -72,9 +121,9 @@
 }
 @keyframes brand-draw { to { stroke-dashoffset: 0; } }
 
-.brand__amp { color: var(--accent); font-family: var(--font-serif); font-style: italic; }
+.brand__amp { color: var(--accent); font-family: var(--font-serif); font-style: italic; transition: color var(--dur) var(--ease-out); }
 .brand__word { white-space: nowrap; }
-.brand__word small { display: block; font-size: .6rem; font-weight: 500; letter-spacing: .12em; color: var(--ink-soft); text-transform: none; margin-top: 2px; }
+.brand__word small { display: block; font-size: .6rem; font-weight: 500; letter-spacing: .12em; color: var(--ink-soft); text-transform: none; margin-top: 2px; transition: color var(--dur) var(--ease-out); }
 
 .site-nav { display: flex; align-items: center; }
 
@@ -115,6 +164,7 @@
   width: 44px; height: 44px;
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
+  transition: border-color var(--dur) var(--ease-out);
 }
 
 .nav-toggle__bars,
@@ -123,7 +173,7 @@
   display: block;
   width: 18px; height: 2px;
   background: var(--ink);
-  transition: transform .3s var(--ease-out), opacity .3s var(--ease-out);
+  transition: transform .3s var(--ease-out), opacity .3s var(--ease-out), background-color var(--dur) var(--ease-out);
 }
 .nav-toggle__bars { position: relative; }
 .nav-toggle__bars::before,
