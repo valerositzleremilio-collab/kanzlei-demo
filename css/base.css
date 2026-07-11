@@ -105,6 +105,12 @@ p { text-wrap: pretty; max-width: 65ch; }
 
 main { display: block; }
 
+/* Fix-Pass Aufgabe 4: echte Buttons statt fetter Text — solider Fill (Primär) bzw.
+   Outline→Fill (Sekundär), Hover-Lift + Pfeil, Press-Feedback (scale .97, Emil-Kowalski-
+   Regel), EIN Easing. Basis war bereits BTN-034 (Ink-Wipe-Fill) — Lab-Perfekt-BTN-
+   Bestand (BTN-101–180 auf Disk) sind funktionale Mikro-UI-Spezimen (Drawer/Toggle/
+   Copy-Feld), keine Marketing-CTA-Shells; übernommen wurde daher die Handwerks-Regel
+   dahinter (klarer Fill, Zustands-gekoppelte Motion, kein Overshoot), nicht 1:1 Markup. */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -117,9 +123,11 @@ main { display: block; }
   font-weight: 600;
   letter-spacing: .01em;
   white-space: nowrap;
+  transition: transform .15s var(--ease-out), box-shadow var(--dur) var(--ease-out);
 }
+.btn:active { transform: scale(.97); }
 
-/* Primär-CTA — dezenter gerichteter Ink-Wipe-Fill, KEIN Overshoot (BTN-034 calmed) */
+/* Primär-CTA — Ink-Wipe-Fill (BTN-034) + Hover-Lift + Pfeil (dezent, kein Slide-Gimmick) */
 .btn--primary {
   position: relative;
   background: var(--accent);
@@ -138,16 +146,35 @@ main { display: block; }
   z-index: -1;
   transition: transform var(--dur) var(--ease);
 }
+.btn--primary::after {
+  content: "→";
+  display: inline-block;
+  transition: transform .3s var(--ease-out);
+}
+.btn--primary:hover,
+.btn--primary:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px -14px rgba(27, 23, 18, .45);
+}
 .btn--primary:hover::before,
 .btn--primary:focus-visible::before { transform: scaleX(1); }
+.btn--primary:hover::after,
+.btn--primary:focus-visible::after { transform: translateX(3px); }
+.btn--primary:active { transform: scale(.97); box-shadow: none; }
 
+/* Sekundär-CTA — Outline→Fill (nicht nur Hauch-Tint) */
 .btn--ghost {
   background: transparent;
   color: var(--ink);
   border: 1px solid var(--line);
-  transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease);
+  transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease), color var(--dur) var(--ease);
 }
-.btn--ghost:hover { border-color: var(--accent); background: rgba(110, 79, 30, .06); }
+.btn--ghost:hover,
+.btn--ghost:focus-visible {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--accent-ink);
+}
 
 /* Unterstrich-Draw-Link (TYP-009) */
 .link-draw {
