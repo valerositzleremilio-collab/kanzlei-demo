@@ -21,6 +21,24 @@
     heroWords.forEach(function (w) { w.style.transform = 'none'; });
   }
 
+  /* ---------- 1b. Hero: Layered Parallax-Tiefe (REFERENZEN H5, scrub-Faktor .15/.3/.6) ---------- */
+  var heroLayers = document.querySelectorAll('.hero [data-parallax]');
+  if (heroLayers.length && hasGSAP && hasScrollTrigger && !prefersReduced) {
+    heroLayers.forEach(function (layer) {
+      var factor = parseFloat(layer.dataset.parallax) || 0.2;
+      gsap.to(layer, {
+        yPercent: factor * 50,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 0.4
+        }
+      });
+    });
+  }
+
   /* ---------- 2. Signature: Theme-Shift (einmalig, abgeschwächt) + Zahlen-Count-up ---------- */
   var signature = document.querySelector('.signature');
   if (signature) {

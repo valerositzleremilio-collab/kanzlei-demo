@@ -84,17 +84,28 @@
 
   <main id="main">
 
-    <!-- Hero — HRO-001 Wortmaske, EIN CTA, EINE ruhige Editorial-Ebene (Tiefe statt Farbkasten) -->
+    <!-- Hero — Dark-World-Anker (BUILD-PLAN-v2 §2), 3 Parallax-Tiefenebenen (REFERENZEN H5) +
+         Grain + Glow, HRO-001 Wortmaske, EIN CTA. Kicker-Dopplung entfernt (Caption war Lead-Dopplung). -->
     <section class="hero">
-      <div class="hero__art" aria-hidden="true">
-        <svg class="hero__art-lines" viewBox="0 0 480 640" fill="none">
-          <circle cx="390" cy="220" r="230" stroke="currentColor" stroke-width="1" stroke-opacity="0.12"/>
-          <path class="hero__art-ledger" d="M40 380 H440 M40 420 H440 M40 460 H440 M40 500 H440 M40 540 H440 M40 580 H440" stroke="currentColor" stroke-width="0.75" stroke-opacity="0.14"/>
-          <path class="hero__art-mark" d="M108 412 L120 428 L138 404" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <path class="hero__art-mark" d="M248 492 L260 508 L278 484" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <div class="hero__glow" aria-hidden="true"></div>
+      <div class="hero__art hero__art--back" aria-hidden="true" data-parallax="0.15">
+        <svg viewBox="0 0 480 640" fill="none">
+          <circle cx="390" cy="220" r="230" stroke="currentColor" stroke-width="1" stroke-opacity="0.16"/>
+          <circle cx="390" cy="220" r="320" stroke="currentColor" stroke-width="1" stroke-opacity="0.08"/>
         </svg>
-        <div class="hero__art-grain"></div>
       </div>
+      <div class="hero__art hero__art--mid" aria-hidden="true" data-parallax="0.3">
+        <svg viewBox="0 0 480 640" fill="none">
+          <path d="M40 380 H440 M40 420 H440 M40 460 H440 M40 500 H440 M40 540 H440 M40 580 H440" stroke="currentColor" stroke-width="0.75" stroke-opacity="0.2"/>
+        </svg>
+      </div>
+      <div class="hero__art hero__art--front" aria-hidden="true" data-parallax="0.6">
+        <svg viewBox="0 0 480 640" fill="none">
+          <path d="M108 412 L120 428 L138 404" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M248 492 L260 508 L278 484" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="hero__art-grain" aria-hidden="true"></div>
       <div class="hero__content wrap">
         <span class="kicker hero__kicker">Kanzlei für Unternehmen &amp; Privatmandanten</span>
         <h1 class="hero__title">
@@ -105,7 +116,6 @@
         </h1>
         <p class="hero__lead">Steuerberatung für Unternehmen und Privatmandanten: ruhig, verbindlich, auf den Punkt. Seit 2008 in Villingen-Schwenningen.</p>
         <a href="kontakt.html" class="btn btn--primary hero__cta">Erstgespräch vereinbaren</a>
-        <p class="hero__caption">Villingen-Schwenningen · seit 2008</p>
       </div>
     </section>
 
