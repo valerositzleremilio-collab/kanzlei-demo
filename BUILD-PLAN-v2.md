@@ -164,3 +164,51 @@ nutzbar (Zahlen = echte Endwerte), 0 Console-Errors, Touch ≥44 px, WCAG AA, CD
   `footer.css`, `home.css`), Home-JS (`home.js`, `main.js`), `/fonts`. Unterseiten NICHT anfassen.
 - Nach **Aufgabe 1** (Tokens) sofort **commit + push** → Terminal 2 zieht die neuen Tokens.
 - Danach: commit je Aufgabe.
+
+---
+
+## 8 · Terminal 2 — Unterseiten/SEO/DSGVO-Gate auf Farbwelt A (Sonnet 5)
+
+**Ausgangslage:** Terminal 1 Aufgabe 1 (`356e276`) lieferte `css/tokens.css` mit denselben Variablen-
+Namen wie zuvor (`--bg`, `--ink`, `--accent`, `--accent-dark`, `--line`, `--bg-deep` …), nur neue Werte.
+Dadurch übernahmen `css/subpages.css` und alle 6 Unterseiten die neue Farbwelt **automatisch**, ohne
+Strukturänderung — geprüft per Live-Render (`leistungen-unternehmen.html`, `leistungen-privat.html`,
+`team.html`, `kontakt.html`): Hero, Nav-CTA, Team-Porträts (Dark-Panel + Bronze-Linien), Anfahrt-SVG
+(Bronze-Pin) und Formular-Button zeigen konsistent Espresso-Anthrazit/Off-White/Messing.
+
+**Gefundene + gefixte Lücke:** `theme-color`-Meta auf allen 6 Unterseiten zeigte noch `#F4F1EA`
+(altes Ivory) statt der neuen Papier-Farbe → auf `#EFE9DE` korrigiert (Commit `783ba73`).
+
+**Neue Grep-Prüfung (alte Hex-Werte):** `grep -rniE '#1F4A38|#9DBBA9|#163627|#F4F1EA|#ECE7DB|#17211C|#1A2420|#55605A|#D8D2C4'`
+über alle 6 Unterseiten + `subpages.css` + JS → **0 Treffer** nach dem theme-color-Fix. Kein Restfarbwert
+aus der alten Tannengrün/Ivory-Welt übrig.
+
+**og-image neu gerendert (Commit `ca3c0a6`):** das alte `og-image.png` zeigte noch die Tannengrün-Palette.
+Per Canvas-2D (self-hosted Archivo/Fraunces, `document.fonts.load` vor dem Zeichnen) in der neuen
+Farbwelt A neu erzeugt, 1200×630, 59 KB, aus dem Repo selbst gerendert (kein Fremd-Tool/Fremd-Asset).
+
+**AA-Kontrast unabhängig nachgerechnet** (WCAG-Relativluminanz-Formel, nicht nur Terminal-1-Kommentare
+übernommen):
+
+| Paar | Ratio |
+|---|---|
+| `--ink` auf `--bg` | 14.76:1 |
+| `--ink-soft` auf `--bg` | 5.02:1 |
+| `--accent` (Text) auf `--bg` | 6.21:1 |
+| `--accent-hov` auf `--bg` | 8.34:1 |
+| `--accent-dark` auf `--bg-deep` | 7.63:1 |
+| `--accent-dark-hov` auf `--bg-deep` | 9.72:1 |
+| `--accent-ink` auf `--accent` (Button-Fläche) | 6.03:1 |
+| `--ink-inv` auf `--bg-deep` | 14.91:1 |
+
+Alle Text-Paare ≥ 4.5:1 (AA) — die neue Bronze-Palette ist nicht nur optisch, sondern messbar
+mindestens so kontraststark wie die alte Tannengrün-Palette (vgl. BUILD-PLAN.md §6c: alte niedrigste
+war 5.32:1, hier niedrigste 5.02:1, beide über der AA-Schwelle).
+
+**0 Console-Errors** verifiziert auf `team.html` (frisches Reload) und `kontakt.html` (alte + neue
+Palette). Interne Links weiterhin 0 Treffer auf fehlende Ziele (Regex-Check über alle `.html`).
+
+**Stand:** Terminal 1 baut aktuell weiter an Home (Aufgabe 3 „Signature-Moment", Commit `dd83cff`,
+danach vermutlich weitere Home-Bausteine). Terminal 2 wartet den Home-Abschluss ab, bevor die
+finale sitesweite QA (390px/reduced-motion/JS-off/Cross-Browser, mein Aufgabe-4-Punkt) läuft, da
+Home-Änderungen (Nav/Footer/Fonts) auch die Unterseiten sitesweite betreffen können.
