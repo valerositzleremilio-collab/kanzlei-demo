@@ -236,3 +236,51 @@ Chrome-Browser (separate Engine-Instanz) zeigen identisches Layout/Farben — ke
 Bruch beobachtet. Kein Zugriff auf Firefox/Safari in dieser Umgebung; nicht weiter automatisierbar hier.
 
 **Alle 6 von Terminal 2 verantworteten Unterseiten + Home (Terminal 1) bestehen die Aufgabe-4-QA-Kriterien.**
+
+---
+
+## Aufgabe 5 — Craft-Abnahme gegen die Award-Referenzen (Opus 4.8 High)
+
+Side-by-side der fertigen Home gegen die Aufgabe-0-Referenzen (Legal Editorial Dark:
+R2 Locomotive hell↔dunkel · R3 KOENIGSEGG-Palette · R4 KAIVOSS-Choreografie). Live im
+Browser durchgescrollt (1440), Guardrails im Code verifiziert, Terminal-2-Puppeteer-QA
+(28 Kombinationen, 7 Seiten) als unabhängiger Beleg für 390px / reduced-motion / JS-off.
+
+### Craft-Checkliste — bestanden mit Belegen
+- **Farbwelt-Wirkung:** hell↔dunkel-Dramaturgie greift durchgehend (Hero dunkel → Leistungen/
+  About hell → Signature-Flip → CTA/Footer dunkel). Kein flacher Cream-Kasten mehr = das
+  Kern-Ziel erreicht. Beleg: Sektions-Screenshots, Signature-Scrub live durchfahren.
+- **Typo:** riesige Editorial-Display-Typo (--fs-display) im Hero, Serif-Italic-Emphasis in
+  Messing, tabular-nums-Signaturziffern. Descender-Clearance „Erstgespräch"/„spürt." geprüft.
+- **EIN Akzent:** Messing/Bronze konsistent auf der ganzen Seite (kein Zweitakzent). Zwei
+  Helligkeitsstufen (tiefe Bronze auf hell, helle Messing auf dunkel) = derselbe Ton, AA-sauber.
+- **Weißraum / Grid-Bruch:** About-Teaser bricht das Grid (Full-Bleed-Espresso-Art-Panel).
+  Großzügiger Sektions-Pad (clamp 6–11rem).
+- **Captions/Attribution:** Social-Proof mit echten Namen + Firma (nicht „Jane Doe"), Trust-
+  Chips mit realen Kammern/Qualifikationen.
+- **Motion vs TASTE+KAIVOSS:** Signature ist mehrstufig-gekoppelt (Flip→Fold→Count→Hairline),
+  EIN Easing, kein Overshoot. Motion-Budget 5 (Hero, Signature, About-Parallax, Reveal-Stagger,
+  Trust-Draw) — im 4–6-Rahmen. Karten-Hover CRD-008 tut etwas (Zustand), zählt nicht als Deko.
+
+### Durchfaller benannt + gefixt (1 Iteration)
+1. **Em-Dashes in Body-Copy** (Anti-Slop-Tell): About-Text, Footer-Claim, Footer-Demo-Note,
+   Brand-aria-Label → entfernt/zu Punkt bzw. Mittelpunkt. (Range-„Mo–Do 8:00–17:00" bleibt:
+   korrekter deutscher Bis-Strich, kein Tell. Meta-/Title-Dashes = SEO-Domäne Terminal 2,
+   seitenübergreifend konsistent, nicht einseitig geändert.)
+2. **Eyebrow-Dichte** (KI-Grammatik: Kicker über fast jeder Sektion): die zwei rein redundanten
+   („Über uns", „So arbeiten wir" über selbsttragenden H2) entfernt. Verbleibende Kicker sind
+   entweder echte Sektions-Überschrift (Zahlen/Stimmen/Vertrauen, kein H2) oder tragen echte
+   Kategorisierung (Leistungen) → deliberates Light-System statt Reflex-Scaffold.
+
+### Ehrliche Einschätzung: „Site of the Day-fähig? Noch KI-Geruch?"
+Der KI-Geruch des Ausgangsstands (flacher Cream-Hero, tote Zahlen, generische Typo) ist **weg**.
+Klar Top-Tier für eine Kanzlei/Professional-Services-Seite; belastbarer awwwards-**Nominee/
+Honorable-Mention**-Kandidat. Ehrliche Rest-Distanz zu echtem SOTD: (a) die eigene CSS/SVG-Art
+(Siegel/Ledger) statt echter Architektur-/Portrait-Fotografie — für eine fiktive Demo bewusst
+und sauber ausgeführt, aber Fotografie würde weiter tragen; (b) die 3 gleichen Leistungs-Karten
+sind der einzige leicht templatige Punkt (durch funktionalen Hover + echte Gleichrang-Inhalte
+vertretbar); (c) Fraunces-Italic-Emphasis ist bewusst als Editorial-Legal-Geste gesetzt (gesperrtes
+Marken-Token aus A0), kein Default-Griff. Innerhalb der Vorgaben (fiktive Demo, self-hosted Fonts,
+nur GSAP+Lenis) ein echtes Top-1%-Craft-Ergebnis.
+
+**Checkliste bestanden. Kein KI-Look mehr.**
