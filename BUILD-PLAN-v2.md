@@ -208,7 +208,31 @@ war 5.32:1, hier niedrigste 5.02:1, beide über der AA-Schwelle).
 **0 Console-Errors** verifiziert auf `team.html` (frisches Reload) und `kontakt.html` (alte + neue
 Palette). Interne Links weiterhin 0 Treffer auf fehlende Ziele (Regex-Check über alle `.html`).
 
-**Stand:** Terminal 1 baut aktuell weiter an Home (Aufgabe 3 „Signature-Moment", Commit `dd83cff`,
-danach vermutlich weitere Home-Bausteine). Terminal 2 wartet den Home-Abschluss ab, bevor die
-finale sitesweite QA (390px/reduced-motion/JS-off/Cross-Browser, mein Aufgabe-4-Punkt) läuft, da
-Home-Änderungen (Nav/Footer/Fonts) auch die Unterseiten sitesweite betreffen können.
+**Stand:** Terminal 1 hat mit `864b462` („restliche Home-Sektionen mit Craft") die Home-Rebuild-Reihe
+(Aufgabe 1–4) abgeschlossen. Damit war die Grundlage für die finale sitesweite QA gegeben.
+
+## 8b · Terminal 2 — Aufgabe 4: QA gesamte Site (headless Chrome, Puppeteer-Core)
+
+**Methode:** `puppeteer-core` lokal installiert (nur Scratchpad, nicht im Repo), gegen System-Chrome
+(`C:\Program Files\Google\Chrome\Application\chrome.exe`) — dieselbe Pipeline wie in BUILD-PLAN.md §6b/§6c
+für den v1-Build. Alle 7 Seiten × 4 Zustände (28 Kombinationen) automatisiert geprüft:
+`1440px` · `390px` · `prefers-reduced-motion: reduce` · `JavaScript deaktiviert`.
+
+**Ergebnis: 0 Abweichungen.**
+- **Kein horizontaler Overflow** auf keiner der 28 Kombinationen (`scrollWidth === clientWidth` überall,
+  auch bei 390px und im Dark-Hero mit Parallax-Kreisen).
+- **0 Console-/Page-/Request-Errors** auf allen 7 Seiten in allen 4 Zuständen.
+- **Genau 1 `<h1>`** pro Seite (kein Doppel-H1 durch die Home-Craft-Änderungen).
+- **JS-off-Zahlen-Check (Signature-Sektion, der frühere Bugtyp aus Fix-Pass 1):** `18` / `340+` /
+  `€ 2,4 Mio.` stehen als echte Endwerte im gerenderten Text, nicht `0` — mit `setJavaScriptEnabled(false)`
+  gemessen, nicht nur am Markup abgelesen.
+- **Reduced-motion-Endzustand** (Screenshot, Hero): Wortmaske vollständig sichtbar, Parallax-Kreise/
+  Hairlines statisch da, kein Inhalt hinter einer nie startenden Animation versteckt.
+- **390px-Mobile** (Screenshot, Hero): Hamburger-Icon, Headline umbricht sauber 2-zeilig, CTA-Button
+  volle Breite, kein Clipping am Dark→Papier-Übergang.
+
+**Cross-Browser-Basis:** Chromium-Rendering (Puppeteer/Chrome) + manuelle Live-Prüfung im Claude-in-
+Chrome-Browser (separate Engine-Instanz) zeigen identisches Layout/Farben — kein Browser-spezifischer
+Bruch beobachtet. Kein Zugriff auf Firefox/Safari in dieser Umgebung; nicht weiter automatisierbar hier.
+
+**Alle 6 von Terminal 2 verantworteten Unterseiten + Home (Terminal 1) bestehen die Aufgabe-4-QA-Kriterien.**
