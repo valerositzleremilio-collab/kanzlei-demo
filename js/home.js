@@ -10,17 +10,24 @@
   var hasGSAP = typeof window.gsap !== 'undefined';
   var hasScrollTrigger = typeof window.ScrollTrigger !== 'undefined';
 
-  /* ---------- 1. Hero: Wortmaske + Kicker (Load-Entry) ---------- */
+  /* ---------- 1. Hero: Wortmaske + Kicker + Figur (Load-Entry) ---------- */
   var heroKicker = document.querySelector('.hero__kicker');
   var heroWords = document.querySelectorAll('.hero .mask-word > span');
+  var heroFigure = document.querySelector('.hero__figure');
+  var heroFigureMobile = window.matchMedia('(max-width: 860px)').matches;
 
   if (hasGSAP && !prefersReduced) {
     var heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
     if (heroKicker) heroTl.to(heroKicker, { opacity: 1, y: 0, duration: .6 }, 0.1);
     if (heroWords.length) heroTl.to(heroWords, { y: 0, duration: .8, stagger: .05 }, 0.15);
+    if (heroFigure) heroTl.to(heroFigure, { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }, 0.2);
   } else {
     if (heroKicker) { heroKicker.style.opacity = 1; heroKicker.style.transform = 'none'; }
     heroWords.forEach(function (w) { w.style.transform = 'none'; });
+    if (heroFigure) {
+      heroFigure.style.opacity = 1;
+      heroFigure.style.transform = heroFigureMobile ? 'translateX(50%)' : 'none';
+    }
   }
 
   /* ---------- 1b. Hero: Layered Parallax-Tiefe (REFERENZEN H5, scrub-Faktor .15/.3/.6) ---------- */

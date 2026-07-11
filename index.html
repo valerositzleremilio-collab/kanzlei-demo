@@ -84,12 +84,12 @@
 
   <main id="main">
 
-    <!-- Hero — EINE durchgehende dunkle Bühne (kein 50/50-Split: die Kunst-Ebenen sind jetzt
-         full-bleed hinter dem gesamten Textblock, nicht in einer rechten Box konfiniert).
-         Depth-Mechanik nach Lab-Perfekt HRO-003 "Scale-Down-Karte" (bucket:perfekt, REFERENZEN H3):
-         die Bühne "dolly"t beim Scroll dezent zurück (scale + border-radius), OHNE die 200%-Pin-
-         Zone des Originals zu übernehmen (das hätte den Aufgabe-1-Höhenbug wiederholt) — hier
-         am eigenen Scroll-Austritt (top top → bottom top) gescrubbt, keine zusätzliche Höhe.
+    <!-- Hero — exakt 100dvh, Figur als zentrales Element (Fix-Pass). Text oben-links (max ~52%
+         Breite), Figur bündig rechts/unten (bis 84dvh) — bewusst KEIN 50/50-Split: die Figur ist
+         echter, expressiver Bildinhalt (kein leerer Flächenblock wie im Vor-Fix-Zustand), die
+         Kunst-Ebenen bleiben full-bleed dahinter. Depth-Mechanik nach Lab-Perfekt HRO-003
+         "Scale-Down-Karte" (bucket:perfekt, REFERENZEN H3): die Bühne "dolly"t beim Scroll-Austritt
+         dezent zurück (scale + border-radius), ohne zusätzliche Sektionshöhe (kein 200%-Pin-Bug).
          3 Parallax-Tiefenebenen (REFERENZEN H5) + Grain + Glow, HRO-001 Wortmaske, EIN CTA. -->
     <section class="hero" id="heroStage">
       <div class="hero__glow" aria-hidden="true"></div>
@@ -113,6 +113,13 @@
         </svg>
       </div>
       <div class="hero__art-grain" aria-hidden="true"></div>
+      <figure class="hero__figure" aria-hidden="true" data-parallax="0.12">
+        <div class="hero__figure-glow"></div>
+        <picture>
+          <source srcset="assets/berater/berater-08-winkt.webp" type="image/webp">
+          <img src="assets/berater/berater-08-winkt.png" alt="" width="1000" height="1500" loading="eager" fetchpriority="high">
+        </picture>
+      </figure>
       <div class="hero__content wrap">
         <span class="kicker hero__kicker">Kanzlei für Unternehmen &amp; Privatmandanten</span>
         <h1 class="hero__title">
