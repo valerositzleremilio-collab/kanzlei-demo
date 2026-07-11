@@ -234,6 +234,10 @@ Für die Nische (seriöse Steuerkanzlei, Effekt-Level *dezent*, „Vertrauen vor
 - [x] **Aufgabe 3** — Unterseiten. 2 Leistungsseiten (Hero→Problem/Nutzen→Ablauf→FAQ→CTA, JSON-LD), Team (3 CSS-Art-Profile), Kontakt (Formular+Submit-Zyklus+Anfahrt-SVG). *(Sonnet 5)*
 - [x] **Aufgabe 4** — Craft-Pass + Abnahme (headless-Chrome-Review, Checkliste bestanden, 4 Durchfaller gefixt → §6b). *(Opus 4.8 High)*
 - [x] **Aufgabe 5** — DSGVO/Security-Gate. Vollständige 09-Checkliste belegt (Cookies/Storage/Network gemessen, CSP ergänzt+verifiziert, 3 a11y-Lücken gefixt) → §6c. *(Sonnet 5)*
-- [ ] Abschluss — Deploy + Vault zurückfüllen *(Sonnet 5)*
+- [x] **Abschluss** — Deploy + Vault zurückfüllen. Fix-Pass-Commits (`41d5c46`…`ca6d685`) gepusht, GitHub Pages neu gebaut + live verifiziert (Titel-Encoding, OG-Meta, 0 Console-Errors auf index.html + kontakt.html geprüft). Vault-Eintrag `01-Projekte/Kanzlei-Demo.md` aktualisiert. *(Sonnet 5)*
+
+### Live-URLs (Stand nach Abschluss)
+- **GitHub Pages (kanonisch):** https://valerositzleremilio-collab.github.io/kanzlei-demo/ — HEAD `ca6d685`
+- **Vercel-Mirror:** https://kanzlei-demo-one.vercel.app
 </content>
 </invoke>
