@@ -147,7 +147,7 @@ main { display: block; }
   border: 1px solid var(--line);
   transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease);
 }
-.btn--ghost:hover { border-color: var(--accent); background: rgba(31, 74, 56, .05); }
+.btn--ghost:hover { border-color: var(--accent); background: rgba(110, 79, 30, .06); }
 
 /* Unterstrich-Draw-Link (TYP-009) */
 .link-draw {

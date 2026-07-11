@@ -70,10 +70,11 @@ Foto/Art-Grade bleibt dezent (Vault-Regel: nie flächig-toxisch, kein hue-rotate
   --line-inv:    rgba(237,230,214,.14);
 
   /* ── EIN Akzent — Messing / Bronze ── */
-  --accent:      #C6A15B;   /* Messing — auf DUNKEL (Buttons, Emphasis, Ziffern) */
-  --accent-hov:  #D8B871;   /* heller bei Hover */
-  --accent-text: #8A6A2E;   /* Bronze — Text-Emphasis auf HELL (hält WCAG AA) */
-  --accent-ink:  #16130D;   /* dunkler Text auf Messing-Fläche */
+  --accent:          #6E4F1E;   /* tiefe Bronze — Text/Icons/Button-Fill auf HELL, AA-geprüft (~6.2:1 auf --bg) */
+  --accent-hov:      #573D16;   /* dunkler bei Hover auf hellem Grund */
+  --accent-dark:     #C6A15B;   /* helle Messing — Text/Ziffern/Emphasis auf DUNKEL, AA-geprüft (~7.6:1 auf --bg-deep) */
+  --accent-dark-hov: #D8B871;   /* heller bei Hover auf dunklem Grund */
+  --accent-ink:      #EDE6D6;   /* heller Text auf Bronze-Button-Fläche, AA-geprüft (~5.7:1 auf --accent) */
 
   /* ── Typografie (self-hosted: Archivo Grotesk + Fraunces-Italic Serif-Emphasis) ── */
   --font-grotesk: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;

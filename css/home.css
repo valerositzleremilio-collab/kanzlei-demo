@@ -183,7 +183,7 @@ html.js .mask-word > span { transform: translateY(105%); }
   color: var(--ink-soft);
   transition: color .8s var(--ease-out);
 }
-.signature.is-dark .stat__label { color: rgba(244, 241, 234, .65); }
+.signature.is-dark .stat__label { color: rgba(237, 230, 214, .65); }
 
 @media (max-width: 700px) {
   .signature__stats { grid-template-columns: 1fr; gap: 2.25rem; }
@@ -222,8 +222,8 @@ html.js .mask-word > span { transform: translateY(105%); }
   position: absolute;
   inset: -15% -10%;
   background:
-    linear-gradient(160deg, rgba(157, 187, 169, .16), transparent 55%),
-    radial-gradient(120% 90% at 20% 15%, rgba(157, 187, 169, .22), transparent 60%),
+    linear-gradient(160deg, rgba(198, 161, 91, .16), transparent 55%),
+    radial-gradient(120% 90% at 20% 15%, rgba(198, 161, 91, .22), transparent 60%),
     var(--bg-deep);
   will-change: transform;
 }
@@ -388,7 +388,7 @@ html.js .mask-word > span { transform: translateY(105%); }
   color: var(--ink);
   transition: transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
 }
-.chip:hover { transform: translateY(-2px); box-shadow: 0 12px 24px -16px rgba(26, 36, 32, .35); }
+.chip:hover { transform: translateY(-2px); box-shadow: 0 12px 24px -16px rgba(27, 23, 18, .35); }
 
 .chip__border {
   position: absolute;

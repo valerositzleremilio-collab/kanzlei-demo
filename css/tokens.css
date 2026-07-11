@@ -1,4 +1,6 @@
-/* WALDNER & PART — Design Tokens · gesperrt in BUILD-PLAN.md §3 */
+/* WALDNER & PART — Design Tokens · gesperrt in BUILD-PLAN-v2.md §3
+   Farbwelt A „Legal Editorial Dark": warm-espresso Anthrazit als Sektions-Anker
+   (nicht nur Akzent) + warmes Off-White + EIN Messing/Bronze-Akzent. */
 
 @font-face {
   font-family: 'Archivo';
@@ -17,42 +19,54 @@
 }
 
 :root {
-  /* Basis — warmes Ivory-Mono */
-  --bg:          #F4F1EA;
-  --bg-alt:      #ECE7DB;
-  --bg-deep:     #17211C;
-  --ink:         #1A2420;
-  --ink-soft:    #55605A;
-  --line:        #D8D2C4;
-  --line-deep:   rgba(244, 241, 234, .16);
+  /* ── Papier / Light-World (Default-Sektionen) ── */
+  --bg:          #EFE9DE;
+  --bg-alt:      #E6DECF;
+  --ink:         #1B1712;
+  --ink-soft:    #6B6154;
+  --line:        #D6CBB6;
+  --line-deep:   rgba(237, 230, 214, .14);
 
-  /* EIN Akzent — tiefes Tannengrün */
-  --accent:      #1F4A38;
-  --accent-hov:  #163627;
-  --accent-ink:  #F4F1EA;
-  --accent-dark: #9DBBA9;
+  /* ── Anthrazit / Dark-World (Anker: Hero, Signature-Flip, CTA, Footer) ── */
+  --bg-deep:      #16130D;
+  --bg-deep-alt:  #201B13;
+  --ink-inv:      #EDE6D6;
+  --ink-inv-soft: rgba(237, 230, 214, .62);
 
-  /* Typografie */
+  /* ── EIN Akzent — Messing / Bronze ── */
+  --accent:          #6E4F1E;   /* tiefe Bronze — Text/Icons/Button-Fill auf HELL, AA-geprüft (~6.2:1 auf --bg) */
+  --accent-hov:      #573D16;   /* dunkler bei Hover auf hellem Grund */
+  --accent-dark:     #C6A15B;   /* helle Messing — Text/Ziffern/Emphasis auf DUNKEL, AA-geprüft (~7.6:1 auf --bg-deep) */
+  --accent-dark-hov: #D8B871;   /* heller bei Hover auf dunklem Grund */
+  --accent-ink:      #EDE6D6;   /* heller Text auf Bronze-Button-Fläche, AA-geprüft (~5.7:1 auf --accent) */
+
+  /* ── Typografie (self-hosted: Archivo Grotesk + Fraunces-Italic Serif-Emphasis) ── */
   --font-grotesk: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-serif:   'Fraunces', Georgia, serif;
 
-  --fs-h1:     clamp(2.8rem, 8vw, 7rem);
-  --fs-h2:     clamp(2rem, 5vw, 4rem);
-  --fs-h3:     clamp(1.3rem, 2.5vw, 2rem);
-  --fs-lead:   clamp(1.1rem, 1.6vw, 1.4rem);
-  --fs-body:   clamp(1rem, 1.1vw, 1.15rem);
-  --fs-small:  0.9rem;
-  --fs-kicker: 0.75rem;
+  --fs-mega:    clamp(4rem, 14vw, 13rem);
+  --fs-display: clamp(3.2rem, 10vw, 9rem);
+  --fs-h1:      clamp(2.6rem, 6vw, 5.5rem);
+  --fs-h2:      clamp(2rem, 4.5vw, 3.6rem);
+  --fs-h3:      clamp(1.25rem, 2vw, 1.6rem);
+  --fs-lead:    clamp(1.1rem, 1.5vw, 1.35rem);
+  --fs-body:    clamp(1rem, 1.05vw, 1.1rem);
+  --fs-small:   0.9rem;
+  --fs-kicker:  0.72rem;
 
-  /* System */
-  --max-w:  1200px;
-  --pad-x:  clamp(1rem, 4vw, 3rem);
-  --section-pad: clamp(5rem, 12vh, 10rem);
+  /* ── System ── */
+  --max-w:       1240px;
+  --max-w-wide:  1440px;
+  --pad-x:       clamp(1.25rem, 4vw, 4rem);
+  --section-pad: clamp(6rem, 14vh, 11rem);
+  --gap:         clamp(1.5rem, 3vw, 3rem);
 
+  /* ── Motion — EIN Easing (KAIVOSS, gemessen) ── */
   --ease:      cubic-bezier(0.65, 0.05, 0.36, 1);
-  --ease-out:  cubic-bezier(0.23, 1, 0.32, 1);
-  --dur:       .6s;
+  --ease-out:  cubic-bezier(0.65, 0.05, 0.36, 1);
+  --dur:       .7s;
 
   --radius-sm: 6px;
   --radius-md: 12px;
+  --grain:     .07;
 }
