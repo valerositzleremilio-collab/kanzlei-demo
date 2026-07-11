@@ -1,8 +1,9 @@
-/* WALDNER & PART — Home-Interaktionen (Aufgabe 2–4)
-   Motion-Budget (4-6): Hero-Wortmaske+Parallax · Signature-Pin-Choreografie
-   (Theme-Flip+Fold+Count-up+Hairline) · Parallax-Tiefe (About) · Reveal-Stagger
-   (Steps/Proof, sitewide in main.js) · Trust-Chips-Draw. Karten-Mask-Wipe ist
-   reiner CSS-Hover, zählt nicht zum Scroll-Motion-Budget.
+/* WALDNER & PART — Home-Interaktionen (Aufgabe 2–4, Fix-Passes)
+   Motion-Budget: Hero-Wortmaske+Parallax+Figur-Rise+Depth-Dolly · Signature-Pin-
+   Choreografie (Theme-Flip+Fold+Count-up+Hairline) · Parallax-Tiefe (About) ·
+   Reveal-Stagger (Steps/Proof, sitewide in main.js) · Trust-Chips-Draw ·
+   Berater-Figur wiederkehrend (Einschweb+Float, 4 Sektionen, EIN Muster). Karten-
+   Mask-Wipe ist reiner CSS-Hover, zählt nicht zum Scroll-Motion-Budget.
    Alles reduced-motion-safe; ohne JS bleibt jeder Inhalt sichtbar (html.js-Gate). */
 
 (function () {
@@ -213,4 +214,46 @@
       chipRects.forEach(function (rect) { rect.style.strokeDashoffset = 0; });
     }
   }
+
+  /* ---------- 5. Berater-Figur, wiederkehrend: Einschweb-Slide + Dauer-Float (Aufgabe 4)
+     Statisch (PNG/WebP, kein Video/Loop), max 1 Figur/Sektion, kein Layout-Shift (die
+     Figur ist position:absolute, raus aus dem Textfluss). CSS setzt die Ruheposition
+     (opacity:0 + translateX), GSAP tweent von dort auf sichtbar — kein doppeltes gsap.set
+     noetig (GSAP liest den berechneten Start-Transform selbst aus, wie beim Hero-Figur-
+     Muster). Nach Abschluss startet der Dauer-Float (eigener innerer Wrapper, eigene
+     CSS-Animation, kein Transform-Konflikt mit dem einmaligen Einschweb-Tween). ---------- */
+  var sectionFigures = document.querySelectorAll('.section-figure');
+  sectionFigures.forEach(function (fig) {
+    function reveal() { fig.classList.add('is-visible'); }
+
+    if (prefersReduced) {
+      fig.style.opacity = 1;
+      fig.style.transform = 'none';
+    } else if (hasGSAP && hasScrollTrigger) {
+      ScrollTrigger.create({
+        trigger: fig,
+        start: 'top 88%',
+        once: true,
+        onEnter: function () {
+          gsap.to(fig, { x: 0, opacity: 1, duration: .9, ease: 'power3.out', onComplete: reveal });
+        }
+      });
+    } else if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'none';
+            reveal();
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: .2 });
+      io.observe(fig);
+    } else {
+      fig.style.opacity = 1;
+      fig.style.transform = 'none';
+      reveal();
+    }
+  });
 })();

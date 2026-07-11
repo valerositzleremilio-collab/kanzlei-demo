@@ -199,6 +199,8 @@ main { display: block; }
    Hero dunkel → hell → Signature-Flip → CTA/Footer dunkel) */
 .cta-band { padding-bottom: var(--section-pad); }
 .cta-band__inner {
+  position: relative;
+  overflow: hidden;
   text-align: center;
   background: var(--bg-deep);
   color: var(--ink-inv);

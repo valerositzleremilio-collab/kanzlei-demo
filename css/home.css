@@ -152,7 +152,32 @@ html.js .hero__figure { opacity: 0; transform: translateY(28px); }
 
 /* ---------- Leistungs-Überblick ---------- */
 .services {
+  position: relative;
+  overflow: clip;
   padding-bottom: var(--section-pad);
+}
+
+/* Scoped-Override, 3 gefundene Bugs live per Screenshot gefixt: (1) generische bottom:0-
+   Position kollidierte mit der 3-Karten-Grid-Zeile, (2) ein erster Linksversuch kollidierte
+   mit der H2, (3) ein negativer Linksversuch erzeugte echtes horizontales Scrollen (window.
+   scrollTo-Test, nicht nur scrollWidth-Vergleich — body{overflow-x:clip} verhindert zwar
+   Malen/Scrollbar, aber der HTML-Root bleibt technisch scrollbar, siehe "NIE auf html"-Notiz
+   in base.css). Fix: rechts statt links (services__heading hat max-width:16ch, rechts davon
+   ist Raum), garantiert innerhalb der Wrap-Box (kein negativer Offset), Figur horizontal
+   gespiegelt (--mirror), damit die Zeige-Geste weiter Richtung Inhalt zeigt. */
+.services .section-figure {
+  top: -1.25rem;
+  bottom: auto;
+  right: 0;
+  left: auto;
+  height: clamp(110px, 13vw, 160px);
+}
+.section-figure--mirror img { transform: scaleX(-1); }
+
+@media (max-width: 780px) {
+  /* Kein sicherer Freiraum mehr neben der H2 auf schmalen Viewports — lieber ausblenden
+     als riskieren, dass die dekorative Figur echten Inhalt (H2/Karten) verdeckt. */
+  .services .section-figure { display: none; }
 }
 
 .services__heading {
@@ -284,6 +309,7 @@ html.js .hero__figure { opacity: 0; transform: translateY(28px); }
 
 /* ---------- Über-uns-Teaser (Grid-Bruch: Bild bleedet zum Viewport-Rand) ---------- */
 .about-teaser {
+  position: relative;
   padding-block: var(--section-pad);
   overflow: hidden;
 }
@@ -402,7 +428,7 @@ html.js .hero__figure { opacity: 0; transform: translateY(28px); }
 }
 
 /* ---------- So arbeiten wir (echte Sequenz, 01/02/03 gerechtfertigt) ---------- */
-.home-steps { padding-bottom: var(--section-pad); }
+.home-steps { position: relative; overflow: clip; padding-bottom: var(--section-pad); }
 
 .home-steps__heading { margin-top: .85rem; max-width: 18ch; }
 
@@ -460,7 +486,7 @@ html.js .hero__figure { opacity: 0; transform: translateY(28px); }
 }
 
 /* ---------- Trust-Band (Zertifikat-Chips) ---------- */
-.trust { padding-bottom: var(--section-pad); }
+.trust { position: relative; padding-bottom: var(--section-pad); }
 
 .trust__chips {
   margin-top: 1.75rem;
@@ -504,11 +530,61 @@ html.js .chip__border rect.is-drawing { animation: chip-draw .8s var(--ease-out)
 
 /* CTA-Band ist sitewide (auch Unterseiten) → siehe base.css */
 
+/* ---------- Berater-Figur, wiederkehrend (Aufgabe 4) ----------
+   Statische PNG/WebP, kein Video/Loop. Absolut positioniert = kein Layout-Shift (raus aus
+   dem Textfluss, Bildladezeit kann Umgebung nie verschieben). Zwei-Ebenen-Trick gegen
+   Transform-Konflikt: Außen-Element = einmaliger Einschweb-Slide (GSAP, translateX),
+   Innen-Wrapper = eigener, unabhängiger Dauer-Float (CSS-Animation, translateY) — beide
+   animieren verschiedene Elemente, keine gegenseitige Überschreibung. Max 1 Figur/Sektion. */
+.section-figure {
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+  height: clamp(200px, 30vw, 320px);
+  pointer-events: none;
+}
+/* Höhen-Kette bis zum img muss lückenlos sein, sonst löst height:100% gegen ein
+   auto-hohes Elternelement nicht auf und das img rendert in seiner intrinsischen
+   Grösse (1000x1500 aus den width/height-Attributen) — realer Bug, live gefunden:
+   .section-figure__float hatte keine eigene Höhe, Figur überdeckte die Karten. */
+.section-figure__float { display: block; height: 100%; }
+.section-figure picture,
+.section-figure img { display: block; height: 100%; width: auto; object-fit: contain; }
+/* clamp() nie negativ werden lassen — ein negativer left/right-Offset lässt die Figur über
+   den Container hinausbluten, was den HTML-Root real horizontal scrollbar macht (per
+   window.scrollTo-Test gefunden, body{overflow-x:clip} verhindert nur das Malen/die
+   Scrollbar, nicht die Scroll-Fähigkeit selbst — siehe "NIE auf html"-Notiz in base.css).
+   max(0px, …) statt clamp() als untere Grenze: die Figur darf sich dem Rand nähern,
+   aber nie darüber hinaus. */
+.section-figure--left { left: max(0px, clamp(-24px, -2.5vw, 6px)); }
+.section-figure--right { right: max(0px, clamp(-24px, -2.5vw, 6px)); }
+
+html.js .section-figure { opacity: 0; }
+html.js .section-figure--left { transform: translateX(-44px); }
+html.js .section-figure--right { transform: translateX(44px); }
+
+@keyframes section-figure-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+html.js .section-figure.is-visible .section-figure__float {
+  animation: section-figure-float 4.6s var(--ease) infinite;
+}
+
+@media (max-width: 780px) {
+  /* Schmale Viewports: kleiner + dezenter (Hintergrund-Akzent statt Vordergrund-Element),
+     kein horizontaler Einschweb-Slide (zu wenig Raum) — nur sanftes Einblenden. */
+  .section-figure { height: clamp(140px, 32vw, 200px); opacity: .85; }
+  html.js .section-figure { transform: none; }
+}
+
 /* ---------- Reduced-Motion: keine Position, Farbe/Opacity bleiben ---------- */
 @media (prefers-reduced-motion: reduce) {
   html.js .mask-word > span,
   html.js .hero__kicker,
-  html.js .hero__figure { transform: none; opacity: 1; }
+  html.js .hero__figure,
+  html.js .section-figure { transform: none; opacity: 1; }
+  html.js .section-figure.is-visible .section-figure__float { animation: none; }
 }
 @media (prefers-reduced-motion: reduce) and (max-width: 860px) {
   /* Mobile-Ruheposition ist translateX(50%) (Zentrierung), nicht none — Rise-Offset entfernen,
