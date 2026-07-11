@@ -39,10 +39,14 @@
     });
   }
 
-  /* ---------- 2. Signature: Theme-Shift (einmalig, abgeschwächt) + Zahlen-Count-up ---------- */
+  /* ---------- 2. Signature — das Award-Herz: gepinnt, scrub-Theme-Flip (SEC-001-Lerp),
+     gestaffelter Fold-Reveal + Rolling-Numbers + Hairline-Draw (KAIVOSS-Choreografie:
+     Auslöser führt, Folgen ~0.3 versetzt, EIN Easing, kein Overshoot). ---------- */
   var signature = document.querySelector('.signature');
   if (signature) {
     var statEls = signature.querySelectorAll('.stat__num');
+    var statBlocks = signature.querySelectorAll('.stat');
+    var hairline = signature.querySelector('.signature__hairline');
 
     function formatStat(el, value) {
       var decimals = parseInt(el.dataset.decimals || '0', 10);
@@ -52,8 +56,8 @@
       el.textContent = prefix + formatted + suffix;
     }
 
-    function runCountUps() {
-      statEls.forEach(function (el) {
+    function runCountUps(stagger) {
+      statEls.forEach(function (el, idx) {
         var target = parseFloat(el.dataset.count || '0');
         // Markup zeigt den Endwert per Default (No-JS/Crawler/Reader-Mode-sicher).
         // Erst hier, unmittelbar bevor die Animation wirklich läuft, kurz auf 0 setzen.
@@ -62,7 +66,8 @@
         var proxy = { v: 0 };
         gsap.to(proxy, {
           v: target,
-          duration: 1.2,
+          duration: 1,
+          delay: stagger ? idx * 0.06 : 0,
           ease: 'power3.out',
           onUpdate: function () { formatStat(el, proxy.v); }
         });
@@ -71,10 +76,64 @@
 
     function activateSignature() {
       signature.classList.add('is-dark');
-      runCountUps();
+      runCountUps(false);
     }
 
-    if (hasGSAP && hasScrollTrigger) {
+    if (hasGSAP && hasScrollTrigger && !prefersReduced) {
+      signature.classList.add('js-scrub');
+
+      var bgFrom = [230, 222, 207]; // --bg-alt
+      var bgTo = [22, 19, 13];      // --bg-deep
+      var flipped = false;
+      var counted = false;
+
+      gsap.set(statBlocks, { clipPath: 'inset(0% 0 100% 0)' });
+      if (hairline) gsap.set(hairline, { scaleX: 0 });
+
+      var bgProxy = { t: 0 };
+      var sigTl = gsap.timeline({
+        defaults: { ease: 'power2.out' },
+        scrollTrigger: {
+          trigger: signature,
+          start: 'top top',
+          end: '+=120%',
+          scrub: 0.5,
+          pin: true
+        }
+      });
+
+      // Stufe 1 (0 → 1): kontinuierliches BG-Lerp, Auslöser der Choreografie.
+      sigTl.to(bgProxy, {
+        t: 1,
+        duration: 1,
+        ease: 'none',
+        onUpdate: function () {
+          var r = Math.round(bgFrom[0] + (bgTo[0] - bgFrom[0]) * bgProxy.t);
+          var g = Math.round(bgFrom[1] + (bgTo[1] - bgFrom[1]) * bgProxy.t);
+          var b = Math.round(bgFrom[2] + (bgTo[2] - bgFrom[2]) * bgProxy.t);
+          signature.style.background = 'rgb(' + r + ',' + g + ',' + b + ')';
+          if (!flipped && bgProxy.t > 0.5) { flipped = true; signature.classList.add('is-dark'); }
+          else if (flipped && bgProxy.t <= 0.5) { flipped = false; signature.classList.remove('is-dark'); }
+        }
+      }, 0);
+
+      // Stufe 2 (Start 0.35, ~0.3 nach dem BG-Auslöser): Stat-Blöcke falten gestaffelt auf.
+      sigTl.to(statBlocks, {
+        clipPath: 'inset(0% 0 0% 0)',
+        duration: 0.6,
+        stagger: 0.08
+      }, 0.35);
+
+      // Stufe 3 (0.55): Rolling-Numbers, einmalig (kein Rückwärts-Zählen bei Scroll-Up).
+      sigTl.call(function () {
+        if (counted) return;
+        counted = true;
+        runCountUps(true);
+      }, null, 0.55);
+
+      // Stufe 4 (0.8): Messing-Hairline zeichnet sich, Abschluss der Choreografie.
+      sigTl.to(hairline, { scaleX: 1, duration: 0.4 }, 0.8);
+    } else if (hasGSAP && hasScrollTrigger) {
       ScrollTrigger.create({
         trigger: signature,
         start: 'top 70%',

@@ -148,7 +148,11 @@
       </div>
     </section>
 
-    <!-- Signature-Moment — SEC-001 Theme-Flip (abgeschwächt, einmalig) + SOC-004 Count-up -->
+    <!-- Signature-Moment — das Award-Herz. Gepinnt, scrub-gekoppelter SEC-001-Lerp
+         (kontinuierliches RGB-Lerp, kein Klassen-Sprung) + gestaffelter Fold-Reveal
+         (KAIVOSS-Choreografie: Auslöser führt, Folgen ~0.3 versetzt, EIN Easing,
+         kein Overshoot) + Rolling-Numbers-Count-up + Messing-Hairline-Draw.
+         Echte Endzahlen im HTML (JS-off/Reader-Mode-sicher), konsistent zu „Seit 2008" = 18. -->
     <section class="signature" id="signatureSection">
       <div class="wrap signature__inner">
         <span class="kicker signature__kicker">Seit 2008 in Villingen-Schwenningen</span>
@@ -166,6 +170,7 @@
             <span class="stat__label">betreutes Mandatsvolumen p.a.</span>
           </div>
         </div>
+        <div class="signature__hairline" aria-hidden="true"></div>
       </div>
     </section>
 

@@ -155,7 +155,13 @@ html.js .mask-word > span { transform: translateY(105%); }
   .services__grid { grid-template-columns: 1fr; }
 }
 
-/* ---------- Signature-Moment (Zahlen + dezenter Theme-Shift) ---------- */
+/* ---------- Signature-Moment — das Award-Herz (Aufgabe 3) ----------
+   Gepinnt + scrub-gekoppelter SEC-001-Lerp (kontinuierliches BG-RGB-Lerp statt
+   Klassen-Sprung) + gestaffelter Fold-Reveal + Rolling-Numbers + Hairline-Draw.
+   .js-scrub schaltet die CSS-Transition ab, solange das Scrub-JS jeden Frame
+   direkt per Inline-Style schreibt (sonst läuft die .8s-Transition der Scroll-
+   Position hinterher). Ohne JS/bei reduced-motion bleibt die CSS-Transition
+   aktiv als einfacher, dezenter Fallback-Flip. */
 .signature {
   padding-block: var(--section-pad);
   background: var(--bg-alt);
@@ -163,7 +169,8 @@ html.js .mask-word > span { transform: translateY(105%); }
   transition: background .8s var(--ease-out), color .8s var(--ease-out);
   text-align: center;
 }
-.signature.is-dark { background: var(--bg-deep); color: var(--bg); }
+.signature.is-dark { background: var(--bg-deep); color: var(--ink-inv); }
+.signature.js-scrub { transition: none; }
 
 .signature__kicker { color: var(--ink-soft); transition: color .8s var(--ease-out); }
 .signature.is-dark .signature__kicker { color: var(--accent-dark); }
@@ -175,12 +182,13 @@ html.js .mask-word > span { transform: translateY(105%); }
   gap: 2rem;
 }
 
-.stat { min-width: 0; }
+.stat { min-width: 0; clip-path: inset(0% 0 0% 0); }
 .stat__num {
   display: block;
   font-family: var(--font-grotesk);
   font-weight: 700;
-  font-size: clamp(2.6rem, 6vw, 4.2rem);
+  font-size: clamp(2.75rem, 6.5vw, 4.75rem);
+  white-space: nowrap;
   letter-spacing: -0.02em;
   font-variant-numeric: tabular-nums;
   color: var(--accent);
@@ -196,6 +204,17 @@ html.js .mask-word > span { transform: translateY(105%); }
   transition: color .8s var(--ease-out);
 }
 .signature.is-dark .stat__label { color: rgba(237, 230, 214, .65); }
+
+.signature__hairline {
+  margin: clamp(2.5rem, 6vw, 3.5rem) auto 0;
+  width: clamp(120px, 20vw, 220px);
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(1);
+  transform-origin: center;
+  transition: background .8s var(--ease-out);
+}
+.signature.is-dark .signature__hairline { background: var(--accent-dark); }
 
 @media (max-width: 700px) {
   .signature__stats { grid-template-columns: 1fr; gap: 2.25rem; }
