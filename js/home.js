@@ -1,6 +1,8 @@
-/* WALDNER & PART — Home-Interaktionen (Aufgabe 2)
-   Motion-Budget: Hero-Wortmaske · Karten-Mask-Wipe (CSS-Hover) · Signature
-   Theme-Shift+Count-up · Parallax-Tiefe (About) · Trust-Chips-Draw.
+/* WALDNER & PART — Home-Interaktionen (Aufgabe 2–4)
+   Motion-Budget (4-6): Hero-Wortmaske+Parallax · Signature-Pin-Choreografie
+   (Theme-Flip+Fold+Count-up+Hairline) · Parallax-Tiefe (About) · Reveal-Stagger
+   (Steps/Proof, sitewide in main.js) · Trust-Chips-Draw. Karten-Mask-Wipe ist
+   reiner CSS-Hover, zählt nicht zum Scroll-Motion-Budget.
    Alles reduced-motion-safe; ohne JS bleibt jeder Inhalt sichtbar (html.js-Gate). */
 
 (function () {
@@ -167,35 +169,7 @@
     });
   }
 
-  /* ---------- 4. Social Proof: rotierendes Zitat (Crossfade, once loaded) ---------- */
-  var proofText = document.getElementById('proofText');
-  var proofWho = document.getElementById('proofWho');
-  if (proofText && proofWho && !prefersReduced) {
-    var quotes = [
-      ['„Endlich eine Kanzlei, die uns erklärt, warum eine Zahl so ist, wie sie ist.“', 'M. Herrmann · Geschäftsführerin'],
-      ['„Ruhig, verbindlich, termintreu. Genau das, was man sich von seiner Steuerberatung wünscht.“', 'T. Berger · Handwerksbetrieb'],
-      ['„Die Steuererklärung war zum ersten Mal kein Rätsel mehr.“', 'S. Kienzle · Privatmandantin']
-    ];
-    var i = 0;
-    setInterval(function () {
-      i = (i + 1) % quotes.length;
-      proofText.style.opacity = '0';
-      proofText.style.transform = 'translateY(-6px)';
-      proofWho.style.opacity = '0';
-      setTimeout(function () {
-        proofText.textContent = quotes[i][0];
-        proofWho.textContent = quotes[i][1];
-        proofText.style.transform = 'translateY(6px)';
-        requestAnimationFrame(function () {
-          proofText.style.opacity = '1';
-          proofText.style.transform = 'none';
-          proofWho.style.opacity = '1';
-        });
-      }, 420);
-    }, 4500);
-  }
-
-  /* ---------- 5. Trust-Chips: Draw-Border (gestaffelt, once) ---------- */
+  /* ---------- 4. Trust-Chips: Draw-Border (gestaffelt, once) ---------- */
   var chipRects = document.querySelectorAll('.chip__border rect');
   if (chipRects.length) {
     if (hasGSAP && hasScrollTrigger && !prefersReduced) {
