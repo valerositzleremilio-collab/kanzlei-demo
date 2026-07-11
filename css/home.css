@@ -68,11 +68,12 @@ html.js .hero__kicker { opacity: 0; transform: translateY(8px); }
 
 .hero__title {
   margin-top: 1.1rem;
-  font-size: clamp(2.1rem, 4.3vw, 3.5rem);
-  line-height: 1.05;
+  font-size: var(--fs-display);
+  line-height: 1.03;
+  letter-spacing: -0.02em;
   color: var(--ink-inv);
 }
-.hero__title .em { color: var(--accent-dark); }
+.hero__title .em { color: var(--accent-dark); letter-spacing: -0.01em; }
 
 .mask-word { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: .05em; }
 .mask-word > span { display: inline-block; }

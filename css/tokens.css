@@ -3,9 +3,23 @@
    (nicht nur Akzent) + warmes Off-White + EIN Messing/Bronze-Akzent. */
 
 @font-face {
-  font-family: 'Archivo';
-  src: url('../fonts/Archivo-Variable.woff2') format('woff2');
-  font-weight: 400 800;
+  font-family: 'General Sans';
+  src: url('../fonts/GeneralSans-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'General Sans';
+  src: url('../fonts/GeneralSans-Semibold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'General Sans';
+  src: url('../fonts/GeneralSans-Bold.woff2') format('woff2');
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
@@ -40,12 +54,20 @@
   --accent-dark-hov: #D8B871;   /* heller bei Hover auf dunklem Grund */
   --accent-ink:      #EDE6D6;   /* heller Text auf Bronze-Button-Fläche, AA-geprüft (~5.7:1 auf --accent) */
 
-  /* ── Typografie (self-hosted: Archivo Grotesk + Fraunces-Italic Serif-Emphasis) ── */
-  --font-grotesk: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  /* ── Typografie (self-hosted: General Sans Grotesk + Fraunces-Italic Serif-Emphasis)
+     Fix-Pass Aufgabe 3: Archivo → General Sans (Space Grotesk verworfen, impeccable-Hook
+     flaggte es korrekt als übernutzt/AI-Slop-Tell — General Sans war die zweite vom Auftrag
+     genannte Option, meidet dasselbe Problem). Award-Referenz (Pentagram/Locomotive-Klasse,
+     Recherche 11.07.): editoriale Display-Skalen sind bei full-bleed-Headlines 6–10vw+,
+     bei einer Headline-Spalte, die sich einen Hero mit großer Portrait-Figur teilt (~33vw
+     Spaltenbreite statt Vollbreite), proportional kleiner: clamp(2–3.25rem)-Bereich,
+     line-height 1.0–1.08, letter-spacing −0.01 bis −0.02em — deckt sich mit den bereits
+     gesperrten h1/h2/h3-Werten unten. ── */
+  --font-grotesk: 'General Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-serif:   'Fraunces', Georgia, serif;
 
   --fs-mega:    clamp(4rem, 14vw, 13rem);
-  --fs-display: clamp(3.2rem, 10vw, 9rem);
+  --fs-display: clamp(2.1rem, 4vw, 3.4rem);
   --fs-h1:      clamp(2.6rem, 6vw, 5.5rem);
   --fs-h2:      clamp(2rem, 4.5vw, 3.6rem);
   --fs-h3:      clamp(1.25rem, 2vw, 1.6rem);
