@@ -41,6 +41,25 @@
     });
   }
 
+  /* ---------- 1c. Hero: Depth-Dolly — Kamera zieht sich beim Scroll-Austritt zurück
+     (Mechanik aus Lab-Perfekt HRO-003 "Scale-Down-Karte", bucket:perfekt). Anders als
+     das Original OHNE 200%-Pin-Zone: hier am eigenen Scroll-Austritt gescrubbt (top top
+     → bottom top), keine zusätzliche Sektions-Höhe — vermeidet den Aufgabe-1-Höhenbug. */
+  var heroStage = document.getElementById('heroStage');
+  if (heroStage && hasGSAP && hasScrollTrigger && !prefersReduced) {
+    gsap.to(heroStage, {
+      scale: 0.97,
+      borderRadius: '28px',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: heroStage,
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 0.4
+      }
+    });
+  }
+
   /* ---------- 2. Signature — das Award-Herz: gepinnt, scrub-Theme-Flip (SEC-001-Lerp),
      gestaffelter Fold-Reveal + Rolling-Numbers + Hairline-Draw (KAIVOSS-Choreografie:
      Auslöser führt, Folgen ~0.3 versetzt, EIN Easing, kein Overshoot). ---------- */

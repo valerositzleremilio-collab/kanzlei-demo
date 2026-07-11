@@ -84,37 +84,43 @@
 
   <main id="main">
 
-    <!-- Hero — Dark-World-Anker (BUILD-PLAN-v2 §2), 3 Parallax-Tiefenebenen (REFERENZEN H5) +
-         Grain + Glow, HRO-001 Wortmaske, EIN CTA. Kicker-Dopplung entfernt (Caption war Lead-Dopplung). -->
-    <section class="hero">
+    <!-- Hero — EINE durchgehende dunkle Bühne (kein 50/50-Split: die Kunst-Ebenen sind jetzt
+         full-bleed hinter dem gesamten Textblock, nicht in einer rechten Box konfiniert).
+         Depth-Mechanik nach Lab-Perfekt HRO-003 "Scale-Down-Karte" (bucket:perfekt, REFERENZEN H3):
+         die Bühne "dolly"t beim Scroll dezent zurück (scale + border-radius), OHNE die 200%-Pin-
+         Zone des Originals zu übernehmen (das hätte den Aufgabe-1-Höhenbug wiederholt) — hier
+         am eigenen Scroll-Austritt (top top → bottom top) gescrubbt, keine zusätzliche Höhe.
+         3 Parallax-Tiefenebenen (REFERENZEN H5) + Grain + Glow, HRO-001 Wortmaske, EIN CTA. -->
+    <section class="hero" id="heroStage">
       <div class="hero__glow" aria-hidden="true"></div>
       <div class="hero__art hero__art--back" aria-hidden="true" data-parallax="0.15">
-        <svg viewBox="0 0 480 640" fill="none">
-          <circle cx="390" cy="220" r="230" stroke="currentColor" stroke-width="1" stroke-opacity="0.16"/>
-          <circle cx="390" cy="220" r="320" stroke="currentColor" stroke-width="1" stroke-opacity="0.08"/>
+        <svg viewBox="0 0 1600 900" fill="none" preserveAspectRatio="xMidYMid slice">
+          <circle cx="1180" cy="260" r="360" stroke="currentColor" stroke-width="1" stroke-opacity="0.14"/>
+          <circle cx="1180" cy="260" r="490" stroke="currentColor" stroke-width="1" stroke-opacity="0.07"/>
+          <circle cx="220" cy="760" r="220" stroke="currentColor" stroke-width="1" stroke-opacity="0.08"/>
         </svg>
       </div>
       <div class="hero__art hero__art--mid" aria-hidden="true" data-parallax="0.3">
-        <svg viewBox="0 0 480 640" fill="none">
-          <path d="M40 380 H440 M40 420 H440 M40 460 H440 M40 500 H440 M40 540 H440 M40 580 H440" stroke="currentColor" stroke-width="0.75" stroke-opacity="0.2"/>
+        <svg viewBox="0 0 1600 900" fill="none" preserveAspectRatio="xMidYMid slice">
+          <path d="M60 560 H1540 M60 600 H1540 M60 640 H1540 M60 680 H1540 M60 720 H1540" stroke="currentColor" stroke-width="0.75" stroke-opacity="0.16"/>
         </svg>
       </div>
       <div class="hero__art hero__art--front" aria-hidden="true" data-parallax="0.6">
-        <svg viewBox="0 0 480 640" fill="none">
-          <path d="M108 412 L120 428 L138 404" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.75" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M248 492 L260 508 L278 484" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+        <svg viewBox="0 0 1600 900" fill="none" preserveAspectRatio="xMidYMid slice">
+          <path d="M1120 600 L1136 620 L1160 588" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M1340 700 L1356 720 L1380 688" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.75" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M240 220 L256 240 L280 208" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
       <div class="hero__art-grain" aria-hidden="true"></div>
       <div class="hero__content wrap">
         <span class="kicker hero__kicker">Kanzlei für Unternehmen &amp; Privatmandanten</span>
         <h1 class="hero__title">
-          <span class="mask-word"><span>Klarheit,</span></span>
+          <span class="mask-word"><span>Steuerberatung,</span></span>
           <span class="mask-word"><span>die</span></span>
-          <span class="mask-word"><span>man</span></span>
-          <span class="mask-word"><span class="em">spürt.</span></span>
+          <span class="mask-word"><span class="em">zuhört.</span></span>
         </h1>
-        <p class="hero__lead">Steuerberatung für Unternehmen und Privatmandanten: ruhig, verbindlich, auf den Punkt. Seit 2008 in Villingen-Schwenningen.</p>
+        <p class="hero__lead">Für Unternehmen und Privatmandanten: ruhig, verbindlich, auf den Punkt. Seit 2008 in Villingen-Schwenningen.</p>
         <a href="kontakt.html" class="btn btn--primary hero__cta">Erstgespräch vereinbaren</a>
       </div>
     </section>
@@ -189,8 +195,8 @@
           <figcaption>Kanzleisitz · Rietstraße 12 · Villingen-Schwenningen</figcaption>
         </figure>
         <div class="about-teaser__text">
-          <h2>Steuerberatung, die zuhört.</h2>
-          <p>Klare Ansagen statt Fachchinesisch, verlässliche Termine statt langem Warten. Drei Steuerberater, ein Team, ein Anspruch, mitten in Villingen-Schwenningen.</p>
+          <h2>Drei Steuerberater, ein Anspruch.</h2>
+          <p>Klare Ansagen statt Fachchinesisch, verlässliche Termine statt langem Warten, mitten in Villingen-Schwenningen.</p>
           <a href="team.html" class="link-draw">Team kennenlernen</a>
         </div>
       </div>
